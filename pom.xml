@@ -81,7 +81,7 @@
   <modules>
                       
     <module>core</module>
-    <module>repository</module>
+    <module>persistence</module>
     <module>model</module>
     <module>application</module>
     <module>service</module>
