@@ -1,0 +1,7 @@
+${AnsiColor.BLUE}    ______          __        ___
+${AnsiColor.BLUE}   / ____/___  ____/ /__     /   |  ________  ____  ____ _
+${AnsiColor.BRIGHT_CYAN}  / /   / __ \/ __  / _ \   / /| | / ___/ _ \/ __ \/ __ `/
+${AnsiColor.BRIGHT_CYAN} / /___/ /_/ / /_/ /  __/  / ___ |/ /  /  __/ / / / /_/ /
+${AnsiColor.BRIGHT_CYAN} \____/\____/\__,_/\___/  /_/  |_/_/   \___/_/ /_/\__,_/
+
+${AnsiColor.BRIGHT_YELLOW}Initializing...
