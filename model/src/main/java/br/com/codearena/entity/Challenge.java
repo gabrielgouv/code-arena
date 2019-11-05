@@ -1,12 +1,25 @@
 package br.com.codearena.entity;
 
-import br.com.codearena.entity.contract.IBaseEntity;
+import br.com.codearena.entity.contract.BaseEntity;
 
-public class Challenge extends IBaseEntity<Long> {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "challenges")
+public class Challenge extends BaseEntity<Long> {
+
+    @Column
     private String title;
+
+    @Column
     private String content;
+
+    @Column
     private String difficultLevel;
+
+    @Column
     private Float rating;
 
     public String getTitle() {

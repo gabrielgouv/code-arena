@@ -1,15 +1,29 @@
 package br.com.codearena.entity;
 
-import br.com.codearena.entity.contract.IBaseEntity;
+import br.com.codearena.entity.contract.BaseEntity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
-public class User extends IBaseEntity<Long> {
+@Entity
+@Table(name = "users")
+public class User extends BaseEntity<Long> {
 
+    @Column
     private String email;
+
+    @Column
     private String password;
+
+    @Column
     private String firstName;
+
+    @Column
     private String lastName;
+
+    @Column
     private LocalDate dateOfBirth;
 
     public String getEmail() {
