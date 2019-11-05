@@ -3,10 +3,8 @@ package br.com.codearena;
 import br.com.codearena.core.configuration.Constants;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication(exclude = {JpaRepositoriesAutoConfiguration.class, DataSourceAutoConfiguration.class})
+@SpringBootApplication()
 public class CodeArenaApplication {
 
     public static void main(String[] args) {
