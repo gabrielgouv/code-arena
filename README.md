@@ -12,12 +12,12 @@ A arquitetura utilizada nesse projeto é a [Clean Architecture](https://blog.cle
 - **Services**: Camada de serviçoes que faz a mediação entre Model, Persistence e Controllers;
 
 
-## Instalação e Execução
+## Instalação
 
-- Clone o reposítório em sua máquina;
-- Abra com a sua IDE, no meu caso, utilizo o IntelliJ;
+- Clone o repositório em sua máquina;
+- Abra com a sua IDE, no meu caso, utilizo o IntelliJ.
 
-Para buildar o projeto execute o comando:
-`mvn package`
+## Execução
 
-- Para rodar, basta executar a classe **CodeArenaApplication.java** no módulo Application do projeto.
+1. Rode o comando `mvn clean install` dentro da raiz do projeto;
+2. Rode o comando `mvn spring-boot:run` dentro do módulo (pasta) **application**.
