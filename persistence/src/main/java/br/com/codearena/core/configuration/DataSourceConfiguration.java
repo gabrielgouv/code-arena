@@ -1,4 +1,4 @@
-package br.com.codearena.configuration;
+package br.com.codearena.core.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
