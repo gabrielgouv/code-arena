@@ -1,0 +1,40 @@
+version: '3.4'
+services:
+  db:
+    image: gabrielgouv/postgres-code-arena
+    restart: always
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    environment:
+      TZ: America/Sao_Paulo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: adminadmin
+      POSTGRES_DB: codearena
+    ports:
+      - "5430:5432"
+    networks:
+      - code-arena-network
+  code-arena:
+    image: gabrielgouv/code-arena
+    restart: always
+    build: .
+    working_dir: /code-arena
+    environment:
+      TZ: America/Sao_Paulo
+      SPRING_BOOT_ENVIROMENT: Development
+    volumes:
+      - '.:/code-arena'
+      - '~/.m2:/root/.m2'
+    ports:
+      - "8080:8080"
+    command: 'sh startup.sh'
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - code-arena-network
+networks:
+  code-arena-network:
+    driver: bridge
