@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 public class CodeArenaApplication {
 
     public static void main(String[] args) {
+        System.setProperty("spring.config.location", "../config/application.properties");
         SpringApplication.run(CodeArenaApplication.class, args);
     }
 
