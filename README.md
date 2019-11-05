@@ -15,7 +15,8 @@ A arquitetura utilizada nesse projeto é a [Clean Architecture](https://blog.cle
 ## Instalação
 
 - Clone o repositório em sua máquina;
-- Abra com a sua IDE, no meu caso, utilizo o IntelliJ.
+- Abra com a sua IDE, no meu caso, utilizo o IntelliJ (Import Project).
+
 
 ## Execução tradicional
 
