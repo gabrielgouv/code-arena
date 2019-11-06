@@ -1,6 +1,7 @@
 version: '3.4'
 services:
   db:
+    container_name: code-arena-db
     image: gabrielgouv/postgres-code-arena
     restart: always
     build:
@@ -9,13 +10,14 @@ services:
     environment:
       TZ: America/Sao_Paulo
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: adminadmin
-      POSTGRES_DB: codearena
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: codearena_test
     ports:
       - "5430:5432"
     networks:
       - code-arena-network
   code-arena:
+    container_name: code-arena-server
     image: gabrielgouv/code-arena
     restart: always
     build: .
