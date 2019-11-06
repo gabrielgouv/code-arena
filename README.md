@@ -34,4 +34,6 @@ A arquitetura utilizada nesse projeto é a [Clean Architecture](https://blog.cle
 4. Rode o comando `docker-compose build`;
 5. Em seguida rode o `docker-compose up`.
 
+6. A aplicação será rodada por padrão em `http://localhost:8080`
+
 * Caso seja necessário, altere o docker-compose.yml **e lembre-se de não commitar qualquer mudança feita nele**.
