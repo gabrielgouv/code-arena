@@ -10,11 +10,11 @@ public abstract class BaseEntity<T> {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private T id;
 
-    @Column
-    private LocalDateTime deletion;
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate;
 
-    @Column
-    private LocalDateTime creation;
+    @Column(name = "deletion_date")
+    private LocalDateTime deletionDate;
 
     public T getId() {
         return id;
@@ -24,20 +24,24 @@ public abstract class BaseEntity<T> {
         this.id = id;
     }
 
-    public LocalDateTime getDeletion() {
-        return deletion;
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 
-    public void setDeletion(LocalDateTime deletion) {
-        this.deletion = deletion;
+    public LocalDateTime getDeletionDate() {
+        return deletionDate;
     }
 
-    public LocalDateTime getCreation() {
-        return creation;
+    public void setDeletionDate(LocalDateTime deletionDate) {
+        this.deletionDate = deletionDate;
     }
 
-    public void setCreation(LocalDateTime creation) {
-        this.creation = creation;
+    /**
+     * Automatically inserts entity creation date.
+     */
+    @PrePersist
+    private void prePersistCreationDate() {
+        this.creationDate = LocalDateTime.now();
     }
 
 }
