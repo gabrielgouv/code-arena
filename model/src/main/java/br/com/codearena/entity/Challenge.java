@@ -2,25 +2,26 @@ package br.com.codearena.entity;
 
 import br.com.codearena.entity.contract.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "challenges")
 public class Challenge extends BaseEntity<Long> {
 
-    @Column
+    @Column(nullable = false)
     private String title;
 
-    @Column
+    @Column(nullable = false)
     private String content;
 
-    @Column
+    @Column(name = "difficult_level", nullable = false)
     private String difficultLevel;
 
     @Column
     private Float rating;
+
+    @ManyToOne
+    private User author;
 
     public String getTitle() {
         return title;
@@ -52,6 +53,14 @@ public class Challenge extends BaseEntity<Long> {
 
     public void setRating(Float rating) {
         this.rating = rating;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
 }

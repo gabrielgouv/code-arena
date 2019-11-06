@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity<T> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private T id;
 
     @Column
