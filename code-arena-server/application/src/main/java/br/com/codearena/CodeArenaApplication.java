@@ -3,7 +3,7 @@ package br.com.codearena;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication()
+@SpringBootApplication
 public class CodeArenaApplication {
 
     private static final String CODE_ARENA_PROPERTIES_HOME = "CODE_ARENA_PROPERTIES_HOME";
