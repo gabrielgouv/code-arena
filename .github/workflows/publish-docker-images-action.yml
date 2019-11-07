@@ -5,10 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: CD to server directory
-      run: cd code-arena-server
     - name: Docker compose build
       run: docker-compose build
+      working-directory: ./code-arena-server
     - name: Login Docker Registry
       run: echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
       env:
