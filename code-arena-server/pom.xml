@@ -21,7 +21,7 @@
 
     <module>core</module>
     <module>persistence</module>
-    <module>model</module>
+    <module>domain</module>
     <module>application</module>
     <module>service</module>
 

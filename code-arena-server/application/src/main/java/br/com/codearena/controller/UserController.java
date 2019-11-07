@@ -1,19 +1,28 @@
 package br.com.codearena.controller;
 
 import br.com.codearena.controller.contract.IUserController;
-import org.springframework.web.bind.annotation.GetMapping;
+import br.com.codearena.service.contract.IUserService;
+import br.com.codearena.vo.user.UserInputVO;
+import br.com.codearena.vo.user.UserOutputVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
-import java.util.List;
 
 @RestController
 public class UserController implements IUserController {
 
+    private IUserService userService;
+
+    @Autowired
+    public UserController(IUserService userService) {
+        this.userService = userService;
+    }
+
     @Override
-    @GetMapping(value = "/users")
-    public List<String> getUsers() {
-        return Arrays.asList("João", "Maria", "Marcos");
+    @PostMapping(value = "/user/create")
+    public UserOutputVO create(UserInputVO user) {
+        return userService.create(user);
     }
 
 }
