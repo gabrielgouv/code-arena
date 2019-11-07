@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - name: CD to server directory
+      run: cd code-arena-server
     - name: Docker compose build
       run: docker-compose build
     - name: Login Docker Registry
