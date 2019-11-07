@@ -110,7 +110,6 @@
         <version>2.2.0.RELEASE</version>
         <configuration>
           <mainClass>br.com.codearena.CodeArenaApplication</mainClass>
-          <layout>ZIP</layout>
         </configuration>
         <executions>
           <execution>
@@ -118,7 +117,7 @@
               <goal>repackage</goal>
             </goals>
             <configuration>
-              <classifier>exec</classifier>
+              <classifier>final</classifier>
             </configuration>
           </execution>
         </executions>

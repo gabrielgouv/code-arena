@@ -5,7 +5,7 @@ services:
     image: gabrielgouv/postgres-code-arena
     restart: always
     build:
-      context: ./db
+      context: ./database
       dockerfile: Dockerfile
     environment:
       TZ: America/Sao_Paulo
