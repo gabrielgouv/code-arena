@@ -7,6 +7,7 @@ jobs:
     - uses: actions/checkout@master
     - name: Docker compose build
       run: docker-compose build
+      working-directory: ./code-arena-server
     - name: Login Docker Registry
       run: echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
       env:
