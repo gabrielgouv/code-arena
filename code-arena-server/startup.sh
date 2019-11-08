@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-mvn clean install
+#mvn clean install
 cd application/
 mvn spring-boot:run

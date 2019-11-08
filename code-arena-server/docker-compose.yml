@@ -25,11 +25,9 @@ services:
     environment:
       TZ: America/Sao_Paulo
       SPRING_BOOT_ENVIROMENT: Development
-    volumes:
-      - '.:/code-arena'
-      - '~/.m2:/root/.m2'
     ports:
       - "8080:8080"
+      - "5005:5005"
     command: 'sh startup.sh'
     links:
       - db
