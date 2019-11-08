@@ -8,6 +8,7 @@ public class UserInputVO implements Serializable {
     private String password;
     private String firstName;
     private String lastName;
+    private String dateOfBirth;
 
     public String getEmail() {
         return email;
@@ -41,4 +42,11 @@ public class UserInputVO implements Serializable {
         this.lastName = lastName;
     }
 
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 }

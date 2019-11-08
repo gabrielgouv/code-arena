@@ -6,6 +6,7 @@ public class UserOutputVO {
     private String email;
     private String firstName;
     private String lastName;
+    private String dateOfBirth;
 
     public Long getId() {
         return id;
@@ -37,5 +38,13 @@ public class UserOutputVO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }
