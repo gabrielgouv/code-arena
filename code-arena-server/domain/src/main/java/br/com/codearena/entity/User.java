@@ -2,10 +2,7 @@ package br.com.codearena.entity;
 
 import br.com.codearena.entity.contract.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,11 +22,11 @@ public class User extends BaseEntity<Long> {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @OneToMany
-    private List<FavoriteChallenge> favorites;
+    @ManyToMany
+    private List<Challenge> favoriteChallenges;
 
     @OneToMany(mappedBy = "author")
-    private List<Challenge> challenges;
+    private List<Challenge> createdChallenges;
 
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
@@ -64,6 +61,22 @@ public class User extends BaseEntity<Long> {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Challenge> getFavoriteChallenges() {
+        return favoriteChallenges;
+    }
+
+    public void setFavoriteChallenges(List<Challenge> favoriteChallenges) {
+        this.favoriteChallenges = favoriteChallenges;
+    }
+
+    public List<Challenge> getCreatedChallenges() {
+        return createdChallenges;
+    }
+
+    public void setCreatedChallenges(List<Challenge> createdChallenges) {
+        this.createdChallenges = createdChallenges;
     }
 
     public LocalDate getDateOfBirth() {

@@ -3,6 +3,7 @@ package br.com.codearena.entity;
 import br.com.codearena.entity.contract.BaseEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "challenges")
@@ -19,6 +20,9 @@ public class Challenge extends BaseEntity<Long> {
 
     @Column
     private Float rating;
+
+    @ManyToMany(mappedBy = "favoriteChallenges")
+    private List<User> usersWhoFavorited;
 
     @ManyToOne
     private User author;
@@ -63,4 +67,11 @@ public class Challenge extends BaseEntity<Long> {
         this.author = author;
     }
 
+    public List<User> getUsersWhoFavorited() {
+        return usersWhoFavorited;
+    }
+
+    public void setUsersWhoFavorited(List<User> usersWhoFavorited) {
+        this.usersWhoFavorited = usersWhoFavorited;
+    }
 }
