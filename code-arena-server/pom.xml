@@ -23,7 +23,8 @@
     <module>persistence</module>
     <module>domain</module>
     <module>application</module>
-    <module>service</module>
+    <module>application-service</module>
+    <module>domain-service</module>
 
   </modules>
 
