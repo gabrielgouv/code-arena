@@ -81,7 +81,7 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>2.2.0.RELEASE</version>
         <configuration>
-          <mainClass>br.com.codearena.CodeArenaApplication</mainClass>
+          <mainClass>br.com.codearena.CodeArenaApiGatewayApplication</mainClass>
         </configuration>
         <executions>
           <execution>
