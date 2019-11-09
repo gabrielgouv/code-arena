@@ -1,4 +1,4 @@
-# code-arena
+# Code Arena
 
 ### Pré-requisitos:
 - Git
