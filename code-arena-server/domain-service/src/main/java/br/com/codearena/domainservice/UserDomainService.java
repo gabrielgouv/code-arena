@@ -21,4 +21,9 @@ public class UserDomainService implements IUserDomainService {
         return userRepository.save(user);
     }
 
+    @Override
+    public User findById(Long id) {
+        return userRepository.getOne(id);
+    }
+
 }

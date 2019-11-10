@@ -49,4 +49,5 @@ public class UserInputVO implements Serializable {
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
 }

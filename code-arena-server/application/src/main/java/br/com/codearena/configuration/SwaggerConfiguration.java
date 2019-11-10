@@ -16,7 +16,7 @@ public class SwaggerConfiguration {
     public Docket swaggerApiDocketBean() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("br.com.codearena.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

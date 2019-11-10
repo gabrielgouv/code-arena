@@ -1,6 +1,7 @@
 package br.com.codearena.domain.entity;
 
 import br.com.codearena.domain.entity.contract.BaseEntity;
+import br.com.codearena.domain.enumeration.DifficultLevel;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,11 +13,13 @@ public class Challenge extends BaseEntity<Long> {
     @Column(nullable = false)
     private String title;
 
+    @Lob
     @Column(nullable = false)
     private String content;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "difficult_level", nullable = false)
-    private String difficultLevel;
+    private DifficultLevel difficultLevel;
 
     @Column
     private Float rating;
@@ -43,11 +46,11 @@ public class Challenge extends BaseEntity<Long> {
         this.content = content;
     }
 
-    public String getDifficultLevel() {
+    public DifficultLevel getDifficultLevel() {
         return difficultLevel;
     }
 
-    public void setDifficultLevel(String difficultLevel) {
+    public void setDifficultLevel(DifficultLevel difficultLevel) {
         this.difficultLevel = difficultLevel;
     }
 
