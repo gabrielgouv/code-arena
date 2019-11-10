@@ -31,6 +31,7 @@ O Code Arena Server roda na porta 8081 que fica inacessível fora da rede do doc
 
 http://localhost:8080/api/user/create
 
+**Acesse o Swagger para verificar todos os end-points disponíveis: http://localhost:8080/api/swagger-ui.html**
 
 # Arquitetura dos serviços (WIP)
 
