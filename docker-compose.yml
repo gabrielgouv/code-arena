@@ -27,6 +27,7 @@ services:
     environment:
       TZ: America/Sao_Paulo
       SPRING_BOOT_ENVIROMENT: Development
+      SPRING_PROFILES_ACTIVE: dockerdev
     ports:
     #   - "8081:8081"
       - "5006:5006"
@@ -48,6 +49,7 @@ services:
     environment:
       TZ: America/Sao_Paulo
       SPRING_BOOT_ENVIROMENT: Development
+      SPRING_PROFILES_ACTIVE: dockerdev
     ports:
       - "8080:8080"
       - "5005:5005"
