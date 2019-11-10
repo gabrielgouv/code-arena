@@ -9,6 +9,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserApplicationService implements IUserApplicationService {
 
@@ -26,6 +29,24 @@ public class UserApplicationService implements IUserApplicationService {
         User user = mapper.map(userInputVO, User.class);
         user = this.userDomainService.save(user);
         return mapper.map(user, UserOutputVO.class);
+    }
+
+    @Override
+    public UserOutputVO searchById(Long id) {
+        User user = userDomainService.findById(id);
+        return mapper.map(user, UserOutputVO.class);
+    }
+
+    @Override
+    public List<UserOutputVO> findByFirstName(String firstName) {
+        List<User> users = userDomainService.findByFirstName(firstName);
+        List<UserOutputVO> userOutputVOs = new ArrayList<>();
+
+        for (User user : users) {
+            userOutputVOs.add(mapper.map(user, UserOutputVO.class));
+        }
+
+        return userOutputVOs;
     }
 
 }

@@ -4,12 +4,14 @@ import br.com.codearena.controller.contract.IUserController;
 import br.com.codearena.applicationservice.contract.IUserApplicationService;
 import br.com.codearena.vo.user.UserInputVO;
 import br.com.codearena.vo.user.UserOutputVO;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
+@Api(tags = "User")
 @RestController
 public class UserController implements IUserController {
 
@@ -24,6 +26,18 @@ public class UserController implements IUserController {
     @PostMapping(value = "/user/create")
     public UserOutputVO create(@ModelAttribute UserInputVO user) {
         return userService.create(user);
+    }
+
+    @Override
+    @GetMapping(value = "/user/{id}")
+    public UserOutputVO searchById(@PathVariable Long id) {
+        return userService.searchById(id);
+    }
+
+    @Override
+    @GetMapping(value = "/user")
+    public List<UserOutputVO> searchByFirstName(@RequestParam String firstName) {
+        return userService.findByFirstName(firstName);
     }
 
 }

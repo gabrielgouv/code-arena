@@ -62,6 +62,14 @@ public class Challenge extends BaseEntity<Long> {
         this.rating = rating;
     }
 
+    public List<User> getUsersWhoFavorited() {
+        return usersWhoFavorited;
+    }
+
+    public void setUsersWhoFavorited(List<User> usersWhoFavorited) {
+        this.usersWhoFavorited = usersWhoFavorited;
+    }
+
     public User getAuthor() {
         return author;
     }
@@ -70,11 +78,4 @@ public class Challenge extends BaseEntity<Long> {
         this.author = author;
     }
 
-    public List<User> getUsersWhoFavorited() {
-        return usersWhoFavorited;
-    }
-
-    public void setUsersWhoFavorited(List<User> usersWhoFavorited) {
-        this.usersWhoFavorited = usersWhoFavorited;
-    }
 }

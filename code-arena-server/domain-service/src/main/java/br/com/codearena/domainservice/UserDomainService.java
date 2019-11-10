@@ -6,6 +6,8 @@ import br.com.codearena.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserDomainService implements IUserDomainService {
 
@@ -24,6 +26,11 @@ public class UserDomainService implements IUserDomainService {
     @Override
     public User findById(Long id) {
         return userRepository.getOne(id);
+    }
+
+    @Override
+    public List<User> findByFirstName(String firstName) {
+        return userRepository.findByFirstNameContaining(firstName);
     }
 
 }

@@ -4,10 +4,12 @@ import br.com.codearena.applicationservice.contract.IChallengeApplicationService
 import br.com.codearena.controller.contract.IChallengeController;
 import br.com.codearena.vo.challenge.ChallengeInputVO;
 import br.com.codearena.vo.challenge.ChallengeOutputVO;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(tags = "Challenge")
 @RestController
 public class ChallengeController implements IChallengeController {
 
