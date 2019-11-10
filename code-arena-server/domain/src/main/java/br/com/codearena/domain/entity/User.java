@@ -1,6 +1,7 @@
-package br.com.codearena.entity;
+package br.com.codearena.domain.entity;
 
-import br.com.codearena.entity.contract.BaseEntity;
+import br.com.codearena.domain.entity.contract.BaseEntity;
+import br.com.codearena.domain.enumeration.UserRole;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,16 +11,16 @@ import java.util.List;
 @Table(name = "users")
 public class User extends BaseEntity<Long> {
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     private String password;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name", nullable = false, length = 100)
     private String lastName;
 
     @ManyToMany
@@ -30,6 +31,10 @@ public class User extends BaseEntity<Long> {
 
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_role", nullable = false, columnDefinition = "varchar(32) default 'USER'")
+    private UserRole role = UserRole.USER;
 
     public String getEmail() {
         return email;
@@ -87,4 +92,11 @@ public class User extends BaseEntity<Long> {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
 }

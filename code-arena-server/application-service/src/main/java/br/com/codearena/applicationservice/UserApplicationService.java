@@ -1,7 +1,7 @@
 package br.com.codearena.applicationservice;
 
 import br.com.codearena.domainservice.contract.IUserDomainService;
-import br.com.codearena.entity.User;
+import br.com.codearena.domain.entity.User;
 import br.com.codearena.applicationservice.contract.IUserApplicationService;
 import br.com.codearena.vo.user.UserInputVO;
 import br.com.codearena.vo.user.UserOutputVO;

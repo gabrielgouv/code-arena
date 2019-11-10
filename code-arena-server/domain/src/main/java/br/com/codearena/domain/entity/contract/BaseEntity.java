@@ -1,4 +1,4 @@
-package br.com.codearena.entity.contract;
+package br.com.codearena.domain.entity.contract;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

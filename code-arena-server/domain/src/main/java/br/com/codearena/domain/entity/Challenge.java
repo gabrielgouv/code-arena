@@ -1,6 +1,6 @@
-package br.com.codearena.entity;
+package br.com.codearena.domain.entity;
 
-import br.com.codearena.entity.contract.BaseEntity;
+import br.com.codearena.domain.entity.contract.BaseEntity;
 
 import javax.persistence.*;
 import java.util.List;
