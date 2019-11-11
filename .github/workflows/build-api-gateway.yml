@@ -1,4 +1,4 @@
-name: API Gateway
+name: Build code-arena-api-gateway
 on: [push]
 jobs:
   build:
