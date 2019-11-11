@@ -1,0 +1,10 @@
+name: Authentication Service
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Mvn clean install in code-arena-auth
+      working-directory: ./code-arena-auth
+      run: mvn clean install
