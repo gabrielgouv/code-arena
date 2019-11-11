@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "challenges")
+@SequenceGenerator(name  = BaseEntity.SEQUENCE_GENERATOR_NAME, sequenceName = "seq_challenges", allocationSize = 1)
 public class Challenge extends BaseEntity<Long> {
 
     @Column(nullable = false)

@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
+@SequenceGenerator(name  = BaseEntity.SEQUENCE_GENERATOR_NAME, sequenceName = "seq_users", allocationSize = 1)
 public class User extends BaseEntity<Long> {
 
     @Column(nullable = false, length = 100)

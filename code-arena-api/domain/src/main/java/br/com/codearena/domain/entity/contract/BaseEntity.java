@@ -6,8 +6,10 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class BaseEntity<T> {
 
+    public static final String SEQUENCE_GENERATOR_NAME = "sq_gen";
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_GENERATOR_NAME)
     private T id;
 
     @Column(name = "creation_date")
