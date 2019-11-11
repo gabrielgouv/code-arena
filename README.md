@@ -1,6 +1,6 @@
 # Code Arena
 
-![](https://github.com/gabrielgouv/code-arena/workflows/Build%20all%20services/badge.svg)
+![](https://github.com/gabrielgouv/code-arena/workflows/Build%20all%20services/badge.svg) ![](https://github.com/gabrielgouv/code-arena/workflows/API%20Gateway/badge.svg) ![](https://github.com/gabrielgouv/code-arena/workflows/Code%20Arena%20API/badge.svg) ![](https://github.com/gabrielgouv/code-arena/workflows/Authentication%20Service/badge.svg)
 
 # Pré-requisitos:
 
