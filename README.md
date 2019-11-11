@@ -1,5 +1,7 @@
 # Code Arena
 
+![](https://github.com/gabrielgouv/code-arena/workflows/Build%20all%20services/badge.svg)
+
 # Pré-requisitos:
 
 Todos os programas listados abaixo são necessários para execução da aplicação.
