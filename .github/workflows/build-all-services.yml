@@ -1,0 +1,9 @@
+name: Build all services
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Mvn clean install in all projects
+      run: sh mvn-clean-install-projects.sh
