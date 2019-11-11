@@ -1,15 +1,16 @@
 # Code Arena
 
-### Pré-requisitos:
+# Pré-requisitos:
+
+Todos os programas listados abaixo são necessários para execução da aplicação.
+
 - Git
 - Java 8
 - Maven
 - Docker
 - Docker Compose
 
-## Subindo a aplicação completa
-
-**Atenção:** Para subir a aplicação completa é necessário ter todos os pré-requisitos listados acima.
+# Subindo a aplicação completa
 
 1. Clone este repositório na sua máquina: `git clone https://github.com/gabrielgouv/code-arena.git`
 2. Entre no diretório raiz do projeto: `cd code-arena`
@@ -34,7 +35,7 @@ Desta forma, o Code Arena API roda na porta 8081 que fica inacessível fora da r
 
 **Acesse o Swagger para verificar todos os end-points disponíveis: http://localhost:8080/api/swagger-ui.html**
 
-## Subindo apenas o Code Arena API
+# Subindo apenas o Code Arena API
 
 Caso queira subir apenas o Code Arena API sem o Gateway, siga os passos abaixo:
 
