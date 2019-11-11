@@ -13,23 +13,21 @@
 
 1. Clone este repositório na sua máquina: `git clone https://github.com/gabrielgouv/code-arena.git`
 2. Entre no diretório raiz do projeto: `cd code-arena`
-3. No diretório **code-arena-server** execute o seguinte comando: `mvn clean install`
+3. No diretório **code-arena-api** execute o seguinte comando: `mvn clean install`
 4. Faça o mesmo para o diretório **code-arena-api-gateway**: `mvn clean install`
 5. Volte para a raiz do projeto: `cd ..`
 6. Execute o docker-compose: `docker-compose build` e em seguida `docker-compose up`
 
-⚠️ **Os passos 2, 3, 4 e 5 podem ser substituídos executando o arquivo `mvn-clean-install-projects.sh` (MacOS ou Linux) ou o `mvn-clean-install-projects.bat` (Windows)**
+⚠️ **Os passos 3, 4 e 5 podem ser substituídos executando o arquivo `mvn-clean-install-projects.sh` (MacOS ou Linux) ou o `mvn-clean-install-projects.bat` (Windows)**
 
 ---------
 
 Isto irá subir 3 serviços:
-1. Code Arena Server (code-arena-server)
+1. Code Arena API (code-arena-api)
 2. Code Arena API Gateway (code-arena-api-gateway)
 3. Banco de dados (PostgreSQL)
 
-O Code Arena Server roda na porta 8081 que fica inacessível fora da rede do docker-compose. Para acessar o server é necessário passar pelo API Gateway que é exposto na porta 8080:
-
-http://localhost:8080/api/user/create
+Desta forma, o Code Arena API roda na porta 8081 que fica inacessível fora da rede do docker-compose. Para acessar o server é necessário passar pelo API Gateway que é exposto na porta 8080:
 
 **Acesse o Swagger para verificar todos os end-points disponíveis: http://localhost:8080/api/swagger-ui.html**
 
