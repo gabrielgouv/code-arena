@@ -1,10 +1,10 @@
-name: Code Arena API
+name: Build code-arena-api
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Mvn clean install in API Gateway project
+    - name: Mvn clean install in Code Arena API project
       working-directory: ./code-arena-api
       run: mvn clean install

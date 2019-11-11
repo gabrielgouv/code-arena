@@ -1,4 +1,4 @@
-name: Authentication Service
+name: Build code-arena-auth
 on: [push]
 jobs:
   build:
