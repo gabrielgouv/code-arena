@@ -27,6 +27,9 @@
 2. Code Arena API Gateway (code-arena-api-gateway)
 3. Banco de dados (PostgreSQL)
 
+![Arquitetura 3 serviços](https://github.com/gabrielgouv/code-arena/blob/master/code-arena-docs/arch_v2_api_db_gateway.png?raw=true)
+
+
 Desta forma, o Code Arena API roda na porta 8081 que fica inacessível fora da rede do docker-compose. Para acessar o server é necessário passar pelo API Gateway que é exposto na porta 8080:
 
 **Acesse o Swagger para verificar todos os end-points disponíveis: http://localhost:8080/api/swagger-ui.html**
@@ -46,12 +49,15 @@ Caso queira subir apenas o Code Arena API sem o Gateway, siga os passos abaixo:
 1. Code Arena API (code-arena-api)
 2. Banco de dados (PostgreSQL)
 
+![Arquitetura 2 serviços](https://github.com/gabrielgouv/code-arena/blob/master/code-arena-docs/arch_v2_api_db.png?raw=true)
+
+
 Desta forma o Code Arena API será exposto por padrão na porta 8081 e o banco na porta 5430.
 
 ⚠️ Atenção: Como o Gateway não subiu, o sistema não fica acessível na porta 8080.
 
 **Acesse o Swagger para verificar todos os end-points disponíveis: http://localhost:8081/api/swagger-ui.html**
 
-# Arquitetura dos serviços (WIP)
+# Arquitetura dos serviços completo (WIP)
 
-![Drag Racing](https://github.com/gabrielgouv/code-arena/blob/master/code-arena-docs/services-arch-v1.png?raw=true)
+![Arquitetura completa](https://github.com/gabrielgouv/code-arena/blob/master/code-arena-docs/arch_v2_full.png?raw=true)
