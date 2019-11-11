@@ -1,4 +1,4 @@
-name: Code Arena API
+name: Build code-arena-api
 on: [push]
 jobs:
   build:
