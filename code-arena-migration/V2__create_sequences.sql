@@ -1,0 +1,2 @@
+CREATE SEQUENCE seq_users START 1;
+CREATE SEQUENCE seq_challenges START 1;
