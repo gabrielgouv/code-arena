@@ -1,6 +1,6 @@
 zuul:
   routes:
     api:
-      url: http://code-arena-server:8081/api
+      url: http://code-arena-api:8081/api
 server:
   port: 8080

@@ -5,7 +5,7 @@ services:
     image: gabrielgouv/postgres-code-arena
     restart: always
     build:
-      context: ./code-arena-server/database
+      context: ./code-arena-api/database
       dockerfile: Dockerfile
     environment:
       TZ: America/Sao_Paulo
@@ -16,12 +16,12 @@ services:
       - "5430:5432"
     networks:
       - code-arena-network
-  code-arena-server:
-    container_name: code-arena-server-full
+  code-arena-api:
+    container_name: code-arena-api-full
     image: gabrielgouv/code-arena
     restart: always
     build:
-      context: ./code-arena-server
+      context: ./code-arena-api
       dockerfile: Dockerfile
     working_dir: /code-arena
     environment:
@@ -55,7 +55,7 @@ services:
       - "5005:5005"
     command: 'sh startup.sh'
     links:
-      - code-arena-server
+      - code-arena-api
     networks:
       - code-arena-network
 networks:

@@ -9,11 +9,8 @@ public class CodeArenaApplication {
     private static final String CODE_ARENA_PROPERTIES_HOME = "CODE_ARENA_PROPERTIES_HOME";
 
     public static void main(String[] args) {
-
         checkForExternalProperties();
-
         SpringApplication.run(CodeArenaApplication.class, args);
-
     }
 
     private static void checkForExternalProperties() {
