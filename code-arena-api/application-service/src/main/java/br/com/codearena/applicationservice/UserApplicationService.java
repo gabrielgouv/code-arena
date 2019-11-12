@@ -1,5 +1,6 @@
 package br.com.codearena.applicationservice;
 
+import br.com.codearena.applicationservice.exception.NotFoundException;
 import br.com.codearena.core.security.util.PasswordSecurityUtil;
 import br.com.codearena.domainservice.contract.IUserDomainService;
 import br.com.codearena.domain.entity.User;
@@ -54,6 +55,11 @@ public class UserApplicationService implements IUserApplicationService {
     @Override
     public UserOutputVO findByEmail(String email) {
         User user = userDomainService.findByEmail(email);
+
+        if (user == null) {
+            throw new NotFoundException("User not found");
+        }
+
         return mapper.map(user, UserOutputVO.class);
     }
 
@@ -65,7 +71,7 @@ public class UserApplicationService implements IUserApplicationService {
             return mapper.map(user, UserOutputVO.class);
         }
 
-        return null;
+        throw new NotFoundException("User not found");
 
     }
 
