@@ -40,4 +40,10 @@ public class UserController implements IUserController {
         return userService.findByFirstName(firstName);
     }
 
+    @Override
+    @PostMapping(value = "/user")
+    public UserOutputVO findByEmailAndPassword(@RequestParam String email, @RequestParam String password) {
+        return userService.findByEmailAndPassword(email, password);
+    }
+
 }

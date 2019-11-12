@@ -9,5 +9,6 @@ public interface IUserDomainService {
     User save(User user);
     User findById(Long id);
     List<User> findByFirstName(String firstName);
+    User findByEmailAndPassword(String email, String password);
 
 }

@@ -10,5 +10,6 @@ public interface IUserController {
     UserOutputVO create(UserInputVO user);
     UserOutputVO searchById(Long id);
     List<UserOutputVO> searchByFirstName(String firstName);
+    UserOutputVO findByEmailAndPassword(String email, String password);
 
 }

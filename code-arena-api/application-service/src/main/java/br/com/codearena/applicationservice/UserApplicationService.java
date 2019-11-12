@@ -49,4 +49,10 @@ public class UserApplicationService implements IUserApplicationService {
         return userOutputVOs;
     }
 
+    @Override
+    public UserOutputVO findByEmailAndPassword(String email, String password) {
+        User user = userDomainService.findByEmailAndPassword(email, password);
+        return mapper.map(user, UserOutputVO.class);
+    }
+
 }
