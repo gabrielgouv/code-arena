@@ -16,6 +16,10 @@ Todos os programas listados abaixo são necessários para execução da aplicaç
 
 1. Clone este repositório na sua máquina: `git clone https://github.com/gabrielgouv/code-arena.git`
 2. Entre no diretório raiz do projeto: `cd code-arena`
+3. Execute o arquivo **run.sh**
+
+ou
+
 3. No diretório **code-arena-api** execute o seguinte comando: `mvn clean install`
 4. Faça o mesmo para o diretório **code-arena-api-gateway**: `mvn clean install`
 5. Volte para a raiz do projeto: `cd ..`
