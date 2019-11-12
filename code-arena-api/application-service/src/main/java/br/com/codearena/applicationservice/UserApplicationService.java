@@ -1,5 +1,6 @@
 package br.com.codearena.applicationservice;
 
+import br.com.codearena.core.security.util.PasswordSecurityUtil;
 import br.com.codearena.domainservice.contract.IUserDomainService;
 import br.com.codearena.domain.entity.User;
 import br.com.codearena.applicationservice.contract.IUserApplicationService;
@@ -26,6 +27,7 @@ public class UserApplicationService implements IUserApplicationService {
 
     @Override
     public UserOutputVO create(UserInputVO userInputVO) {
+        userInputVO.setPassword(PasswordSecurityUtil.hashPassword(userInputVO.getPassword()));
         User user = mapper.map(userInputVO, User.class);
         user = this.userDomainService.save(user);
         return mapper.map(user, UserOutputVO.class);
@@ -50,9 +52,21 @@ public class UserApplicationService implements IUserApplicationService {
     }
 
     @Override
-    public UserOutputVO findByEmailAndPassword(String email, String password) {
-        User user = userDomainService.findByEmailAndPassword(email, password);
+    public UserOutputVO findByEmail(String email) {
+        User user = userDomainService.findByEmail(email);
         return mapper.map(user, UserOutputVO.class);
+    }
+
+    @Override
+    public UserOutputVO findByEmailAndPassword(String email, String password) {
+        User user = userDomainService.findByEmail(email);
+
+        if (PasswordSecurityUtil.verifyHash(password, user.getPassword())) {
+            return mapper.map(user, UserOutputVO.class);
+        }
+
+        return null;
+
     }
 
 }

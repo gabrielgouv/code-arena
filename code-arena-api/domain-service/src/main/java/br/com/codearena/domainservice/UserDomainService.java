@@ -34,8 +34,8 @@ public class UserDomainService implements IUserDomainService {
     }
 
     @Override
-    public User findByEmailAndPassword(String email, String password) {
-        return userRepository.findByEmailAndPassword(email, password);
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 }

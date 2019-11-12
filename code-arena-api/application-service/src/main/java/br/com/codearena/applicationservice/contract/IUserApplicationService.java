@@ -10,6 +10,7 @@ public interface IUserApplicationService {
     UserOutputVO create(UserInputVO user);
     UserOutputVO searchById(Long id);
     List<UserOutputVO> findByFirstName(String firstName);
-    UserOutputVO findByEmailAndPassword(String email, String password);
+    UserOutputVO findByEmail(String email);
 
+    UserOutputVO findByEmailAndPassword(String email, String password);
 }

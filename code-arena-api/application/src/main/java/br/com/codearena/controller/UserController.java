@@ -41,7 +41,14 @@ public class UserController implements IUserController {
     }
 
     @Override
-    @PostMapping(value = "/user")
+    @GetMapping(value = "/user/findByEmail")
+    public UserOutputVO findByEmail(@RequestParam String email) {
+        return userService.findByEmail(email);
+    }
+
+    @Override
+    @ResponseBody
+    @PostMapping(value = "/user/findByEmailAndPassword")
     public UserOutputVO findByEmailAndPassword(@RequestParam String email, @RequestParam String password) {
         return userService.findByEmailAndPassword(email, password);
     }
