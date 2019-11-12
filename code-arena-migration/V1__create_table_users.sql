@@ -9,7 +9,7 @@ CREATE TABLE users
     email character varying(100) NOT NULL,
     first_name character varying(100) NOT NULL,
     last_name character varying(100) NOT NULL,
-    password character varying(30) NOT NULL,
+    password character varying(100) NOT NULL,
     user_role character varying(32) NOT NULL DEFAULT 'USER'::character varying,
     CONSTRAINT users_pkey PRIMARY KEY (id)
 );
