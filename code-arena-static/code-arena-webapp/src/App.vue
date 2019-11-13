@@ -1,9 +1,12 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <b-navbar variant="faded" type="light">
+      <b-navbar-brand tag="h1" class="mb-0">Code Arena</b-navbar-brand>
+    </b-navbar>
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+      <router-link to="/users">Users</router-link>
+    </div> -->
     <router-view/>
   </div>
 </template>
