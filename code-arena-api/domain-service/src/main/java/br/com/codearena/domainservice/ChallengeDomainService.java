@@ -6,6 +6,8 @@ import br.com.codearena.repository.IChallengeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ChallengeDomainService implements IChallengeDomainService {
 
@@ -19,6 +21,16 @@ public class ChallengeDomainService implements IChallengeDomainService {
     @Override
     public Challenge save(Challenge challenge) {
         return challengeRepository.save(challenge);
+    }
+
+    @Override
+    public Challenge findById(Long id) {
+        return challengeRepository.getOne(id);
+    }
+
+    @Override
+    public List<Challenge> findALl() {
+        return challengeRepository.findAll();
     }
 
 }

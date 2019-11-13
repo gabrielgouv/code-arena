@@ -53,4 +53,16 @@ public class UserController implements IUserController {
         return userService.findByEmailAndPassword(email, password);
     }
 
+    @Override
+    @PutMapping(value = "/user/addChallengeToFavorites")
+    public void addChallengeToFavorites(@RequestParam Long userId, @RequestParam Long challengeId) {
+        userService.addChallengeToFavorites(userId, challengeId);
+    }
+
+    @Override
+    @GetMapping(value = "/user/findAll")
+    public List<UserOutputVO> findAll() {
+        return userService.findAll();
+    }
+
 }

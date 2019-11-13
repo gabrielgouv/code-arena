@@ -25,6 +25,10 @@ public class User extends BaseEntity<Long> {
     private String lastName;
 
     @ManyToMany
+    @JoinTable(
+            name = "users_favorite_challenges",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "challenge_id", referencedColumnName = "id"))
     private List<Challenge> favoriteChallenges;
 
     @OneToMany(mappedBy = "author")

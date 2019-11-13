@@ -2,6 +2,8 @@ package br.com.codearena.applicationservice;
 
 import br.com.codearena.applicationservice.exception.NotFoundException;
 import br.com.codearena.core.security.util.PasswordSecurityUtil;
+import br.com.codearena.domain.entity.Challenge;
+import br.com.codearena.domainservice.contract.IChallengeDomainService;
 import br.com.codearena.domainservice.contract.IUserDomainService;
 import br.com.codearena.domain.entity.User;
 import br.com.codearena.applicationservice.contract.IUserApplicationService;
@@ -18,11 +20,13 @@ import java.util.List;
 public class UserApplicationService implements IUserApplicationService {
 
     private IUserDomainService userDomainService;
+    private IChallengeDomainService challengeDomainService;
     private ModelMapper mapper;
 
     @Autowired
-    public UserApplicationService(IUserDomainService userDomainService, ModelMapper mapper) {
+    public UserApplicationService(IUserDomainService userDomainService, IChallengeDomainService challengeDomainService, ModelMapper mapper) {
         this.userDomainService = userDomainService;
+        this.challengeDomainService = challengeDomainService;
         this.mapper = mapper;
     }
 
@@ -73,6 +77,41 @@ public class UserApplicationService implements IUserApplicationService {
 
         throw new NotFoundException("User not found");
 
+    }
+
+    @Override
+    public void addChallengeToFavorites(Long userId, Long challengeId) {
+        User user = userDomainService.findById(userId);
+
+        if (user == null) {
+            throw new NotFoundException("User not found");
+        }
+
+        Challenge challenge = challengeDomainService.findById(challengeId);
+
+        if (challenge == null) {
+            throw new NotFoundException("Challenge not found");
+        }
+
+        // FIXME Verificar se a challenge já foi adicionada antes de adicionar
+        List<Challenge> userFavoriteChallenges = user.getFavoriteChallenges();
+        userFavoriteChallenges.add(challenge);
+
+        user.setFavoriteChallenges(userFavoriteChallenges);
+
+        userDomainService.save(user);
+    }
+
+    @Override
+    public List<UserOutputVO> findAll() {
+        List<User> users = userDomainService.findAll();
+        List<UserOutputVO> userOutputVOs = new ArrayList<>();
+
+        for (User user : users) {
+            userOutputVOs.add(mapper.map(user, UserOutputVO.class));
+        }
+
+        return userOutputVOs;
     }
 
 }

@@ -11,6 +11,8 @@ public interface IUserApplicationService {
     UserOutputVO searchById(Long id);
     List<UserOutputVO> findByFirstName(String firstName);
     UserOutputVO findByEmail(String email);
-
     UserOutputVO findByEmailAndPassword(String email, String password);
+    void addChallengeToFavorites(Long userId, Long challengeId);
+    List<UserOutputVO> findAll();
+
 }

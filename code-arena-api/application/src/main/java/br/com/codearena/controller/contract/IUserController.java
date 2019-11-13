@@ -13,7 +13,8 @@ public interface IUserController {
     UserOutputVO searchById(Long id);
     List<UserOutputVO> searchByFirstName(String firstName);
     UserOutputVO findByEmail(String email);
+    UserOutputVO findByEmailAndPassword(String email, String password);
+    void addChallengeToFavorites(Long userId, Long challengeId);
+    List<UserOutputVO> findAll();
 
-    @PostMapping(value = "/user")
-    UserOutputVO findByEmailAndPassword(@RequestParam String email, @RequestParam String password);
 }

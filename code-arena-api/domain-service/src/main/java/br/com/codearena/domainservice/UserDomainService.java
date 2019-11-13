@@ -38,4 +38,9 @@ public class UserDomainService implements IUserDomainService {
         return userRepository.findByEmail(email);
     }
 
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
 }

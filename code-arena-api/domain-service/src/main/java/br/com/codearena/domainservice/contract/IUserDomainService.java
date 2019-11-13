@@ -10,5 +10,6 @@ public interface IUserDomainService {
     User findById(Long id);
     List<User> findByFirstName(String firstName);
     User findByEmail(String email);
+    List<User> findAll();
 
 }
