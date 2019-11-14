@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class RestExceptionHandler {
 
-    private static final String APPLICATION_EXCEPTION = "APPLICATION_EXCEPTION";
-
     @ExceptionHandler(ApplicationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorMessage handleBaseException(ApplicationException ex) {
@@ -20,12 +18,11 @@ public class RestExceptionHandler {
         ex.printStackTrace();
 
         ErrorMessage errorMessage = new ErrorMessage();
-        errorMessage.setStatus(APPLICATION_EXCEPTION);
+        errorMessage.setStatus(ex.getClass().getSimpleName());
         errorMessage.setCode(HttpStatus.BAD_REQUEST.name());
         errorMessage.setMessage(ex.getMessage());
 
         return errorMessage;
-
     }
 
 }

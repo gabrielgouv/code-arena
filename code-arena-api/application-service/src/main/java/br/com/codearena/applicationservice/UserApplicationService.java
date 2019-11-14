@@ -1,5 +1,6 @@
 package br.com.codearena.applicationservice;
 
+import br.com.codearena.applicationservice.exception.IllegalOperationException;
 import br.com.codearena.applicationservice.exception.NotFoundException;
 import br.com.codearena.core.security.util.PasswordSecurityUtil;
 import br.com.codearena.domain.entity.Challenge;
@@ -12,9 +13,11 @@ import br.com.codearena.vo.user.UserOutputVO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserApplicationService implements IUserApplicationService {
@@ -76,10 +79,10 @@ public class UserApplicationService implements IUserApplicationService {
         }
 
         throw new NotFoundException("User not found");
-
     }
 
     @Override
+    @Transactional(rollbackFor = Throwable.class)
     public void addChallengeToFavorites(Long userId, Long challengeId) {
         User user = userDomainService.findById(userId);
 
@@ -93,13 +96,43 @@ public class UserApplicationService implements IUserApplicationService {
             throw new NotFoundException("Challenge not found");
         }
 
-        // FIXME Verificar se a challenge já foi adicionada antes de adicionar
-        List<Challenge> userFavoriteChallenges = user.getFavoriteChallenges();
+        Set<Challenge> userFavoriteChallenges = user.getFavoriteChallenges();
+
+        if (userFavoriteChallenges.contains(challenge)) {
+            throw new IllegalOperationException("Challenge is already user favorite");
+        }
+
         userFavoriteChallenges.add(challenge);
 
         user.setFavoriteChallenges(userFavoriteChallenges);
 
         userDomainService.save(user);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Throwable.class)
+    public void removeChallengeFromFavorites(Long userId, Long challengeId) {
+        User user = userDomainService.findById(userId);
+
+        if (user == null) {
+            throw new NotFoundException("User not found");
+        }
+
+        Challenge challenge = challengeDomainService.findById(challengeId);
+
+        if (challenge == null) {
+            throw new NotFoundException("Challenge not found");
+        }
+
+        Set<Challenge> userFavoriteChallenges = user.getFavoriteChallenges();
+
+        boolean removed = userFavoriteChallenges.remove(challenge);
+
+        if (removed) {
+            userDomainService.save(user);
+        } else {
+            throw new NotFoundException("Challenge not found in favorites");
+        }
     }
 
     @Override

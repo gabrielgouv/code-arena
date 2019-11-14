@@ -13,6 +13,7 @@ public interface IUserApplicationService {
     UserOutputVO findByEmail(String email);
     UserOutputVO findByEmailAndPassword(String email, String password);
     void addChallengeToFavorites(Long userId, Long challengeId);
+    void removeChallengeFromFavorites(Long userId, Long challengeId);
     List<UserOutputVO> findAll();
 
 }

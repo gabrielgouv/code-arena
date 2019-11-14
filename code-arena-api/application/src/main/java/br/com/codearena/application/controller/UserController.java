@@ -60,6 +60,12 @@ public class UserController implements IUserController {
     }
 
     @Override
+    @PutMapping(value = "/user/removeChallengeFromFavorites")
+    public void removeChallengeFromFavorites(Long userId, Long challengeId) {
+        userService.removeChallengeFromFavorites(userId, challengeId);
+    }
+
+    @Override
     @GetMapping(value = "/user/findAll")
     public List<UserOutputVO> findAll() {
         return userService.findAll();

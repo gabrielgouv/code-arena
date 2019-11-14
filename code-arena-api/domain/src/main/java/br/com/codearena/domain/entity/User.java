@@ -6,6 +6,7 @@ import br.com.codearena.domain.enumeration.UserRole;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -26,10 +27,10 @@ public class User extends BaseEntity<Long> {
 
     @ManyToMany
     @JoinTable(
-            name = "users_favorite_challenges",
+            name = "user_favorite_challenges",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "challenge_id"))
-    private List<Challenge> favoriteChallenges;
+    private Set<Challenge> favoriteChallenges;
 
     @OneToMany(mappedBy = "author")
     private List<Challenge> createdChallenges;
@@ -73,11 +74,11 @@ public class User extends BaseEntity<Long> {
         this.lastName = lastName;
     }
 
-    public List<Challenge> getFavoriteChallenges() {
+    public Set<Challenge> getFavoriteChallenges() {
         return favoriteChallenges;
     }
 
-    public void setFavoriteChallenges(List<Challenge> favoriteChallenges) {
+    public void setFavoriteChallenges(Set<Challenge> favoriteChallenges) {
         this.favoriteChallenges = favoriteChallenges;
     }
 
