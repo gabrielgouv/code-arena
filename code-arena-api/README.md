@@ -2,15 +2,8 @@
 Projeto da disciplina de Sistemas Distribuídos - UniFBV
 
 ## Arquitetura
-A arquitetura utilizada nesse projeto é a [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html), definida por Robert C. Martin
 
-![Arquitetura](https://i.imgur.com/fVDVgnN.png)
-
-- **Core**: Camada de utilidade e de serviços compartilhados entre as outras camadas, também conhecida como crosscutting;
-- **Controllers**: Camada que expõe as APIs REST do sistema;
-- **Persistence**: Implementação das interfaces Repository da camada Model;
-- **Services**: Camada de serviçoes que faz a mediação entre Model, Persistence e Controllers;
-
+![Arquitetura](https://i.imgur.com/sWseilJ.png)
 
 ## Instalação
 
