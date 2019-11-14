@@ -1,4 +1,4 @@
-package br.com.codearena.controller.contract;
+package br.com.codearena.application.controller.contract;
 
 import br.com.codearena.vo.challenge.ChallengeOutputVO;
 import br.com.codearena.vo.challenge.ChallengeInputVO;

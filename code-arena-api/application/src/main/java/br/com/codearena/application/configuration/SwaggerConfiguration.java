@@ -1,4 +1,4 @@
-package br.com.codearena.configuration;
+package br.com.codearena.application.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ public class SwaggerConfiguration {
     public Docket swaggerApiDocketBean() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.codearena.controller"))
+                .apis(RequestHandlerSelectors.basePackage("br.com.codearena.application.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

@@ -1,9 +1,7 @@
-package br.com.codearena.controller.contract;
+package br.com.codearena.application.controller.contract;
 
 import br.com.codearena.vo.user.UserInputVO;
 import br.com.codearena.vo.user.UserOutputVO;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

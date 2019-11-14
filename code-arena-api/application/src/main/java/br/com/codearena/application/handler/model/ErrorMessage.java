@@ -1,4 +1,4 @@
-package br.com.codearena.exception.handler.model;
+package br.com.codearena.application.handler.model;
 
 public class ErrorMessage {
 

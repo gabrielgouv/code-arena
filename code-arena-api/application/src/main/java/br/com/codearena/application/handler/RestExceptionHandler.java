@@ -1,6 +1,6 @@
-package br.com.codearena.exception.handler;
+package br.com.codearena.application.handler;
 
-import br.com.codearena.exception.handler.model.ErrorMessage;
+import br.com.codearena.application.handler.model.ErrorMessage;
 import br.com.codearena.applicationservice.exception.contract.ApplicationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

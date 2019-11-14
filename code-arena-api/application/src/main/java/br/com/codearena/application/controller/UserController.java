@@ -1,6 +1,6 @@
-package br.com.codearena.controller;
+package br.com.codearena.application.controller;
 
-import br.com.codearena.controller.contract.IUserController;
+import br.com.codearena.application.controller.contract.IUserController;
 import br.com.codearena.applicationservice.contract.IUserApplicationService;
 import br.com.codearena.vo.user.UserInputVO;
 import br.com.codearena.vo.user.UserOutputVO;

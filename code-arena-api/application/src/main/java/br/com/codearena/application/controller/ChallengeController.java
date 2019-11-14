@@ -1,7 +1,7 @@
-package br.com.codearena.controller;
+package br.com.codearena.application.controller;
 
 import br.com.codearena.applicationservice.contract.IChallengeApplicationService;
-import br.com.codearena.controller.contract.IChallengeController;
+import br.com.codearena.application.controller.contract.IChallengeController;
 import br.com.codearena.vo.challenge.ChallengeInputVO;
 import br.com.codearena.vo.challenge.ChallengeOutputVO;
 import io.swagger.annotations.Api;

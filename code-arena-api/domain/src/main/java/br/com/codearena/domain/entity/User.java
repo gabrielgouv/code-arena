@@ -15,7 +15,7 @@ public class User extends BaseEntity<Long> {
     @Column(nullable = false, length = 100)
     private String email;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 100)
     private String password;
 
     @Column(name = "first_name", nullable = false, length = 100)
@@ -27,8 +27,8 @@ public class User extends BaseEntity<Long> {
     @ManyToMany
     @JoinTable(
             name = "users_favorite_challenges",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "challenge_id", referencedColumnName = "id"))
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "challenge_id"))
     private List<Challenge> favoriteChallenges;
 
     @OneToMany(mappedBy = "author")
