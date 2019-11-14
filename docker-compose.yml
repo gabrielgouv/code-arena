@@ -18,7 +18,7 @@ services:
       - code-arena-network
   flyway:
     image: flyway/flyway
-    command: -url=jdbc:postgresql://db:5432/codearena_test -schemas=public -user=postgres -password=test migrate
+    command: -url=jdbc:postgresql://db:5432/codearena_test -schemas=public -user=postgres -password=test -connectRetries=10 migrate 
     volumes:
       - ./code-arena-migration/:/flyway/sql
     links:
