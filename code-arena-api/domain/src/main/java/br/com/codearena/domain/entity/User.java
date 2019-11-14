@@ -13,8 +13,11 @@ import java.util.Set;
 @SequenceGenerator(name  = BaseEntity.SEQUENCE_GENERATOR_NAME, sequenceName = "seq_users", allocationSize = 1)
 public class User extends BaseEntity<Long> {
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique = true)
     private String email;
+
+    @Column(nullable = false, length = 20, unique = true)
+    private String username;
 
     @Column(nullable = false, length = 100)
     private String password;
@@ -48,6 +51,14 @@ public class User extends BaseEntity<Long> {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

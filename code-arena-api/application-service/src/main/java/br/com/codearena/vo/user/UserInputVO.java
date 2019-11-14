@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class UserInputVO implements Serializable {
 
     private String email;
+    private String username;
     private String password;
     private String firstName;
     private String lastName;
@@ -16,6 +17,14 @@ public class UserInputVO implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getPassword() {

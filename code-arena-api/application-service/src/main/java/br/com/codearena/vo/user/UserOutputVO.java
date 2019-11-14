@@ -3,6 +3,7 @@ package br.com.codearena.vo.user;
 public class UserOutputVO {
 
     private Long id;
+    private String username;
     private String email;
     private String firstName;
     private String lastName;
@@ -14,6 +15,14 @@ public class UserOutputVO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getEmail() {
@@ -47,4 +56,5 @@ public class UserOutputVO {
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
 }
