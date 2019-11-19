@@ -1,13 +1,12 @@
-package com.jwtauth.authJWT;
+package com.auth.crm;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AuthJwtApplication {
+public class AwClientesApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AuthJwtApplication.class, args);
+		SpringApplication.run(AwClientesApiApplication.class, args);
 	}
-
 }
