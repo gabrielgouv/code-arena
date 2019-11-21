@@ -44,7 +44,21 @@ public class ChallengeApplicationService implements IChallengeApplicationService
     @Override
     public List<ChallengeOutputVO> findAll() {
 
-        List<Challenge> challenges = challengeDomainService.findALl();
+        List<Challenge> challenges = challengeDomainService.findAll();
+        List<ChallengeOutputVO> challengeOutputVOs = new ArrayList<>();
+
+        for (Challenge challenge : challenges) {
+            challengeOutputVOs.add(modelMapper.map(challenge, ChallengeOutputVO.class));
+        }
+
+        return challengeOutputVOs;
+    }
+
+    @Override
+    public List<ChallengeOutputVO> findAllByAuthor(Long userId) {
+        User user  = userDomainService.findById(userId);
+        List<Challenge> challenges = challengeDomainService.findAllByAuthor(user);
+
         List<ChallengeOutputVO> challengeOutputVOs = new ArrayList<>();
 
         for (Challenge challenge : challenges) {

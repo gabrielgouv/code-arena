@@ -1,5 +1,6 @@
 package br.com.codearena.applicationservice.contract;
 
+import br.com.codearena.vo.challenge.ChallengeOutputVO;
 import br.com.codearena.vo.user.UserInputVO;
 import br.com.codearena.vo.user.UserOutputVO;
 
@@ -15,5 +16,7 @@ public interface IUserApplicationService {
     void addChallengeToFavorites(Long userId, Long challengeId);
     void removeChallengeFromFavorites(Long userId, Long challengeId);
     List<UserOutputVO> findAll();
+    UserOutputVO findByUsername(String username);
+    List<ChallengeOutputVO> findFavoritesChallengesFromUser(Long id);
 
 }

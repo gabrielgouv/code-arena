@@ -11,5 +11,6 @@ public interface IUserDomainService {
     List<User> findByFirstName(String firstName);
     User findByEmail(String email);
     List<User> findAll();
+    User findByUsername(String username);
 
 }

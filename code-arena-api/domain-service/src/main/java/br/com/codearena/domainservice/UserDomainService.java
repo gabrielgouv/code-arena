@@ -43,4 +43,9 @@ public class UserDomainService implements IUserDomainService {
         return userRepository.findAll();
     }
 
+    @Override
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
 }

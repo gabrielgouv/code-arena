@@ -8,6 +8,7 @@ import br.com.codearena.domainservice.contract.IChallengeDomainService;
 import br.com.codearena.domainservice.contract.IUserDomainService;
 import br.com.codearena.domain.entity.User;
 import br.com.codearena.applicationservice.contract.IUserApplicationService;
+import br.com.codearena.vo.challenge.ChallengeOutputVO;
 import br.com.codearena.vo.user.UserInputVO;
 import br.com.codearena.vo.user.UserOutputVO;
 import org.modelmapper.ModelMapper;
@@ -145,6 +146,30 @@ public class UserApplicationService implements IUserApplicationService {
         }
 
         return userOutputVOs;
+    }
+
+    @Override
+    public UserOutputVO findByUsername(String username) {
+        User user = userDomainService.findByUsername(username);
+        return  mapper.map(user, UserOutputVO.class);
+    }
+
+    @Override
+    public List<ChallengeOutputVO> findFavoritesChallengesFromUser(Long id) {
+        User user = userDomainService.findById(id);
+
+        if (user == null) {
+            throw new NotFoundException("User not found");
+        }
+
+        Set<Challenge> favoriteChallenges = user.getFavoriteChallenges();
+        List<ChallengeOutputVO> favoriteChallengesVO = new ArrayList<>();
+
+        for (Challenge c : favoriteChallenges) {
+            favoriteChallengesVO.add(mapper.map(c, ChallengeOutputVO.class));
+        }
+
+        return favoriteChallengesVO;
     }
 
 }

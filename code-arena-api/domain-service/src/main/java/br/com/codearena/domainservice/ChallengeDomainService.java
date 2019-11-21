@@ -1,6 +1,7 @@
 package br.com.codearena.domainservice;
 
 import br.com.codearena.domain.entity.Challenge;
+import br.com.codearena.domain.entity.User;
 import br.com.codearena.domainservice.contract.IChallengeDomainService;
 import br.com.codearena.repository.IChallengeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,13 @@ public class ChallengeDomainService implements IChallengeDomainService {
     }
 
     @Override
-    public List<Challenge> findALl() {
+    public List<Challenge> findAll() {
         return challengeRepository.findAll();
+    }
+
+    @Override
+    public List<Challenge> findAllByAuthor(User user) {
+        return challengeRepository.findAllByAuthor(user);
     }
 
 }
