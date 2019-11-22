@@ -1,5 +1,6 @@
 package br.com.codearena.application.controller;
 
+import br.com.codearena.application.controller.contract.BaseController;
 import br.com.codearena.application.controller.contract.IUserController;
 import br.com.codearena.applicationservice.contract.IChallengeApplicationService;
 import br.com.codearena.applicationservice.contract.IUserApplicationService;
@@ -10,12 +11,13 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
 @Api(tags = "User")
 @RestController
-public class UserController implements IUserController {
+public class UserController extends BaseController implements IUserController {
 
     private IUserApplicationService userService;
     private IChallengeApplicationService challengeApplicationService;
@@ -59,7 +61,8 @@ public class UserController implements IUserController {
 
     @Override
     @PutMapping(value = "/user/addChallengeToFavorites")
-    public void addChallengeToFavorites(@RequestParam Long userId, @RequestParam Long challengeId) {
+    public void addChallengeToFavorites(HttpServletRequest httpServletRequest, @RequestParam Long challengeId) {
+        Long userId = getAuthenticatedUserId(httpServletRequest);
         userService.addChallengeToFavorites(userId, challengeId);
     }
 
