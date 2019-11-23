@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" v-if="!toggle">
     <vs-navbar class="nabarx" color="#1F74FF">
       <div slot="title">
         <vs-navbar-title>
@@ -12,7 +12,10 @@
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  props: {
+      toggle: Boolean
+  }
 }
 </script>
 

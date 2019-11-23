@@ -1,30 +1,29 @@
 <template>
-  <div class="menu">
-    <vs-sidebar static-position default-index="1" color="primary" class="sidebarx" spacer v-model="active">
+  <div class="menu" v-if="!toggle">
+    <vs-sidebar static-position default-index="1" color="primary" class="sidebarx" spacer>
 
       <div class="header-sidebar" slot="header">
         <vs-avatar  size="70px" src="https://randomuser.me/api/portraits/men/85.jpg"/>
 
         <h4>
-          My Name
-          <vs-button color="primary" icon="more_horiz" type="flat"></vs-button>
+          User
         </h4>
 
       </div>
 
-      <vs-sidebar-item index="1" icon="question_answer">
+      <vs-sidebar-item index="1" icon="dashboard">
         Dashboard
       </vs-sidebar-item>
 
-      <vs-sidebar-item index="2" icon="gavel">
+      <vs-sidebar-item index="2" icon="favorite">
         Favorite challenges
       </vs-sidebar-item>
 
-      <vs-sidebar-item index="3" icon="gavel">
+      <vs-sidebar-item index="3" icon="check">
         Resolved challenges
       </vs-sidebar-item>
 
-      <vs-sidebar-item index="4" icon="gavel">
+      <vs-sidebar-item index="4" icon="send">
         Submit a new challenge
       </vs-sidebar-item>
 
@@ -54,10 +53,8 @@
 <script>
 export default {
   name: 'Menu',
-  data() {
-      return {
-          active: false
-      }
+  props: {
+      toggle: Boolean
   }
 }
 </script>

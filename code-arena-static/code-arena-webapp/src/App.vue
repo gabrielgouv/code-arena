@@ -2,18 +2,25 @@
   <div id="app">
     <vs-row>
       <vs-col vs-w="12">
-        <Header/>
+        <Header :toggle="!logged"/>
       </vs-col>
     </vs-row>
 
-    <vs-row>
-      <vs-col vs-w="2">
-        <Menu/>
-      </vs-col>
-      <vs-col vs-w="10">
-        <Content/>
-      </vs-col>
-    </vs-row>
+    <div v-if="logged">
+      <vs-row>
+        <vs-col vs-w="2">
+          <Menu />
+        </vs-col>
+        <vs-col vs-w="10">
+          <Content/>
+        </vs-col>
+      </vs-row>
+    </div>
+    <div v-else>
+       <vs-col vs-w="12">
+          <Content/>
+        </vs-col>
+    </div>
 
   </div>
 </template>
@@ -29,6 +36,11 @@ export default {
     Header,
     Menu,
     Content
+  },
+  data() {
+    return {
+      logged: true
+    }
   }
 }
 </script>

@@ -1,49 +1,24 @@
 <template>
   <div class="login">
-    <b-row class="justify-content-md-center">
-        <b-col col md="4">
-            <b-card title="Login" sub-title="Log into your account">
-                <div>
-                    <b-form >
-                        <div class="text-left">
-                        <b-form-group
-                            id="input-group-email"
-                            label="Email address:"
-                            label-for="input-email"
-                        >
-                            <b-form-input
-                                id="input-email"
-                                type="email"
-                                v-model="form.email"
-                                required
-                            ></b-form-input>
-                        </b-form-group>
-                        <b-form-group
-                            id="input-group-password"
-                            label="Password:"
-                            label-for="input-password"
-                        >
-                            <b-form-input
-                                id="input-password"
-                                type="password"
-                                v-model="form.password"
-                                required
-                            ></b-form-input>
-                        </b-form-group>
-                    </div>
-                    <div>
-                        <b-button class="text-right" type="submit" variant="primary">Log in</b-button>
-                    </div> 
-                    </b-form>
-                    <!-- <b-card class="mt-3" header="Form Data Result">
-                    <pre class="m-0">{{ form }}</pre>
-                    </b-card> -->
-                </div>
-
-            </b-card>
-        </b-col>
-        
-    </b-row>
+    <vs-row vs-justify="center">
+        <vs-col type="flex" vs-justify="center" vs-align="center" vs-w="6">
+            <vs-card>
+            <div slot="header">
+                <h3>
+                Log into your account
+                </h3>
+            </div>
+            <div vs-justify="center">
+                <vs-input class="form-input" label-placeholder="E-mail" v-model="form.email"/>
+                <vs-input class="form-input" type="password" label-placeholder="Password" v-model="form.password"/>
+            </div>
+            <div>
+                <vs-button color="primary" type="flat">Create an account</vs-button>
+                <vs-button color="primary" type="filled">Log in</vs-button>
+            </div>
+            </vs-card>
+        </vs-col>
+    </vs-row>
   </div>
 </template>
 
@@ -60,3 +35,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.form-input {
+    width: 100%;
+    margin-bottom: 30px;
+}
+</style>

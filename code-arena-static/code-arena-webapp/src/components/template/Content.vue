@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-      <h1>Dashboard</h1>
+      <router-view></router-view>
   </div>
 </template>
 
@@ -12,7 +12,6 @@ export default {
 
 <style scoped>
 .content {
-    background-color: #efefef;
     padding: 20px;
     height: 100%;
 }
