@@ -1,6 +1,6 @@
 <template>
   <div class="header" v-if="!toggle">
-    <vs-navbar class="nabarx" color="#1F74FF">
+    <vs-navbar class="nabarx large" color="#1F74FF">
       <div slot="title">
         <vs-navbar-title>
           <span class="title">Code Arena</span>
@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style scoped>
+.large {
+  height: 45px !important;
+}
 .title {
     color: #ffffff;
     font-weight: 400;
