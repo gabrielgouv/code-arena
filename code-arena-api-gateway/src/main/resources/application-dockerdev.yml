@@ -2,5 +2,7 @@ zuul:
   routes:
     api:
       url: http://code-arena-api:8081/api
+    auth:
+      url: http://code-arena-auth:8090/auth
 server:
   port: 8080

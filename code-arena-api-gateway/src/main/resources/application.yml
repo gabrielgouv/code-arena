@@ -2,5 +2,8 @@ zuul:
   routes:
     api:
       url: http://localhost:8081/api
+    auth:
+      url: http://localhost:8090/auth
 server:
   port: 8080
+
