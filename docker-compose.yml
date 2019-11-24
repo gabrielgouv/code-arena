@@ -16,17 +16,17 @@ services:
       - "5430:5432"
     networks:
       - code-arena-network
-  # flyway:
-  #   image: flyway/flyway
-  #   command: -url=jdbc:postgresql://db:5432/codearena_test -schemas=public -user=postgres -password=test -connectRetries=10 migrate 
-  #   volumes:
-  #     - ./code-arena-migration/:/flyway/sql
-  #   links:
-  #     - db
-  #   depends_on:
-  #     - db
-  #   networks:
-  #     - code-arena-network
+  flyway:
+    image: flyway/flyway
+    command: -url=jdbc:postgresql://db:5432/codearena_test -schemas=public -user=postgres -password=test -connectRetries=10 migrate 
+    volumes:
+      - ./code-arena-migration/:/flyway/sql
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - code-arena-network
   code-arena-api:
     container_name: code-arena-api-full
     image: gabrielgouv/code-arena
