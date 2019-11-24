@@ -104,7 +104,7 @@ export default {
   border-radius: 0px !important;
 }
 .sidebarx {
-    height: calc(100vh - 38px);
+    height: calc(100vh - 20px);
 }
 .vs-sidebar--background {
     width: 0 !important;

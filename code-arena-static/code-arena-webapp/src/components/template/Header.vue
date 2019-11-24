@@ -1,11 +1,11 @@
 <template>
   <div class="header" v-if="!toggle">
-    <vs-navbar class="nabarx large" color="#1F74FF">
-      <div slot="title">
+    <vs-navbar class="nabarx large">
+      <!-- <div slot="title">
         <vs-navbar-title>
           <span class="title">Code Arena</span>
         </vs-navbar-title>
-      </div>
+      </div> -->
     </vs-navbar>
   </div>
 </template>
@@ -21,11 +21,13 @@ export default {
 
 <style scoped>
 .large {
-  height: 45px !important;
+  height: 20px !important;
+  background: #640064 !important;
+  background-image: linear-gradient(30deg,rgba(var(--vs-primary),1),rgba(var(--vs-primary),.5)) !important;
 }
 .title {
     color: #ffffff;
     font-weight: 400;
-    font-size: 20pt;
+    font-size: 19pt;
 }
 </style>
