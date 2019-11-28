@@ -1,0 +1,8 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /login
+code-arena:
+  security:
+    jwt:
+      secret: asupersecretpassword
