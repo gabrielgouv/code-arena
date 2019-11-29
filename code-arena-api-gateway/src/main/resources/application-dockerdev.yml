@@ -3,9 +3,8 @@ zuul:
     api:
       url: http://code-arena-api:8081/api
     auth:
-#      path: /login/**
+      path: /login/**
       stripPrefix: false
-      sensitiveHeaders: Cookie,Set-Cookie
       url: http://code-arena-auth-server:8090/login
 server:
   port: 8080

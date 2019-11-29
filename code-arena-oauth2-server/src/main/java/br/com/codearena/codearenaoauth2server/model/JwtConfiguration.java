@@ -39,10 +39,4 @@ public class JwtConfiguration {
         return secret;
     }
 
-    @Override
-    public String toString() {
-        return "JwtAuthenticationConfig [url=" + url + ", header=" + header + ", prefix=" + prefix + ", expiration="
-                + expiration + ", secret=" + secret + "]";
-    }
-
 }

@@ -9,15 +9,23 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
+@Component
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     JwtConfiguration jwtConfiguration;
+
+    @Autowired
+    DataSource dataSource;
 
     @Bean
     public JwtConfiguration jwtConfiguration() {
@@ -26,9 +34,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin").password("{noop}admin").roles("ADMIN", "USER").and()
-                .withUser("jgga").password("{noop}123").roles("USER");
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery("select username, password, true"
+                        + " from users where username=?")
+                .authoritiesByUsernameQuery("select username, user_role"
+                        + " from users where username=?");
+//        auth.inMemoryAuthentication()
+//                .withUser("admin").password("{noop}admin").roles("ADMIN", "USER").and()
+//                .withUser("jgga").password("{noop}123").roles("USER");
     }
 
     @Override
@@ -47,8 +60,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JwtUsernamePasswordAuthenticationFilter(jwtConfiguration, authenticationManager()),
                         UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
+                // Libera apenas o /login publico
                 .antMatchers(jwtConfiguration.getUrl()).permitAll()
+                // Bloqueia todos os outros caminhos
                 .anyRequest().permitAll();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }

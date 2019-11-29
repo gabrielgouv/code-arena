@@ -6,3 +6,13 @@ code-arena:
   security:
     jwt:
       secret: asupersecretpassword
+spring:
+  datasource:
+    jdbcUrl: jdbc:postgresql://localhost:5432/codearena_test
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

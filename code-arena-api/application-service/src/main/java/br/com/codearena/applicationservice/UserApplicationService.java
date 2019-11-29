@@ -2,7 +2,6 @@ package br.com.codearena.applicationservice;
 
 import br.com.codearena.applicationservice.exception.IllegalOperationException;
 import br.com.codearena.applicationservice.exception.NotFoundException;
-import br.com.codearena.core.security.util.PasswordSecurityUtil;
 import br.com.codearena.domain.entity.Challenge;
 import br.com.codearena.domainservice.contract.IChallengeDomainService;
 import br.com.codearena.domainservice.contract.IUserDomainService;
@@ -13,6 +12,7 @@ import br.com.codearena.vo.user.UserInputVO;
 import br.com.codearena.vo.user.UserOutputVO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,17 +26,23 @@ public class UserApplicationService implements IUserApplicationService {
     private IUserDomainService userDomainService;
     private IChallengeDomainService challengeDomainService;
     private ModelMapper mapper;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserApplicationService(IUserDomainService userDomainService, IChallengeDomainService challengeDomainService, ModelMapper mapper) {
+    public UserApplicationService(
+            IUserDomainService userDomainService,
+            IChallengeDomainService challengeDomainService,
+            ModelMapper mapper,
+            PasswordEncoder passwordEncoder) {
         this.userDomainService = userDomainService;
         this.challengeDomainService = challengeDomainService;
         this.mapper = mapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public UserOutputVO create(UserInputVO userInputVO) {
-        userInputVO.setPassword(PasswordSecurityUtil.hashPassword(userInputVO.getPassword()));
+        userInputVO.setPassword(passwordEncoder.encode(userInputVO.getPassword()));
         User user = mapper.map(userInputVO, User.class);
         user = this.userDomainService.save(user);
         return mapper.map(user, UserOutputVO.class);
@@ -75,7 +81,7 @@ public class UserApplicationService implements IUserApplicationService {
     public UserOutputVO findByEmailAndPassword(String email, String password) {
         User user = userDomainService.findByEmail(email);
 
-        if (PasswordSecurityUtil.verifyHash(password, user.getPassword())) {
+        if (passwordEncoder.matches(password, user.getPassword())) {
             return mapper.map(user, UserOutputVO.class);
         }
 

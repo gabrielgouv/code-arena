@@ -1,18 +1,17 @@
 zuul:
-  sensitiveHeaders: Cookie,Set-Cookie
   routes:
     api:
       url: http://localhost:8081/api
     auth:
+      path: /login/**
+      stripPrefix: false
       url: http://localhost:8090/login
 server:
   port: 8080
-spring:
+code-arena:
   security:
-    oauth2:
-      resource:
-        jwt:
-          key-value: 123
-          url: /login
-          header: Authorization
-          prefix: Bearer
+    jwt:
+      secret: asupersecretpassword
+      url: /login
+      header: Authorization
+      prefix: Bearer
