@@ -5,6 +5,7 @@ zuul:
     auth:
       path: /login/**
       stripPrefix: false
+      sensitiveHeaders: Cookie,Set-Cookie
       url: http://code-arena-auth-server:8090/login
 server:
   port: 8080
