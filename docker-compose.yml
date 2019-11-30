@@ -54,7 +54,7 @@ services:
     image: gabrielgouv/code-arena-auth-server
     restart: always
     build:
-      context: ./code-arena-oauth2-server
+      context: ./code-arena-auth-server
       dockerfile: Dockerfile
     working_dir: /code-arena
     environment:

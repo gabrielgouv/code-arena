@@ -79,7 +79,7 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>2.2.0.RELEASE</version>
         <configuration>
-          <mainClass>br.com.codearena.codearenaoauth2server.CodeArenaOauth2ServerApplication</mainClass>
+          <mainClass>br.com.codearena.codearenaoauth2server.CodeArenaAuthServerApplication</mainClass>
         </configuration>
         <executions>
           <execution>

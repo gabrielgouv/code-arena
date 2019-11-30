@@ -3,5 +3,5 @@ cd code-arena-api
 mvn clean install
 cd ../code-arena-api-gateway
 mvn clean install
-cd ../code-arena-oauth2-server
+cd ../code-arena-auth-server
 mvn clean install
