@@ -1,17 +1,17 @@
-zuul:
-  routes:
-    api:
-      url: http://localhost:8081/api
-    auth:
-      path: /login/**
-      stripPrefix: false
-      url: http://localhost:8090/login
-server:
-  port: 8080
-code-arena:
-  security:
-    jwt:
-      secret: asupersecretpassword
-      url: /login
-      header: Authorization
-      prefix: Bearer
+#zuul:
+#  routes:
+#    api:
+#      url: http://localhost:8081/api
+#    auth:
+#      path: /auth/**
+#      stripPrefix: false
+#      url: http://localhost:8090/auth
+#server:
+#  port: 8080
+#code-arena:
+#  security:
+#    jwt:
+#      secret: codearena
+#      url: /getToken
+#      header: Authorization
+#      prefix: Bearer

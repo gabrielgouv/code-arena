@@ -1,18 +1,21 @@
 zuul:
   routes:
     api:
-      url: http://code-arena-api:8081/api
+      url: http://code-arena-api:8081
     auth:
-      path: /login/**
-      stripPrefix: false
       sensitiveHeaders: Cookie,Set-Cookie
-      url: http://code-arena-auth-server:8090/login
+      url: http://code-arena-auth-server:8090
 server:
   port: 8080
 code-arena:
   security:
     jwt:
-      secret: asupersecretpassword
-      url: /login
+      secret: codearena
+      url: /getToken
       header: Authorization
       prefix: Bearer
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

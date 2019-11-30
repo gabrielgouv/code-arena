@@ -1,11 +1,9 @@
 server:
   port: 8090
-  servlet:
-    context-path: /login
 code-arena:
   security:
     jwt:
-      secret: asupersecretpassword
+      secret: codearena
 spring:
   datasource:
     jdbcUrl: jdbc:postgresql://db:5432/codearena_test

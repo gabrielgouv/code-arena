@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class JwtConfiguration {
 
-    @Value("${code-arena.security.jwt.url:/login}")
+    @Value("${code-arena.security.jwt.url:/getToken}")
     private String url;
 
     @Value("${code-arena.security.jwt.header:Authorization}")
