@@ -2,6 +2,7 @@ package br.com.codearena.application.controller;
 
 import br.com.codearena.application.controller.contract.BaseController;
 import br.com.codearena.application.controller.contract.IUserController;
+import br.com.codearena.application.helper.AuthenticatedUserHelper;
 import br.com.codearena.applicationservice.contract.IChallengeApplicationService;
 import br.com.codearena.applicationservice.contract.IUserApplicationService;
 import br.com.codearena.vo.challenge.ChallengeOutputVO;
@@ -16,82 +17,87 @@ import java.util.List;
 
 
 @Api(tags = "User")
+@RequestMapping(value = "/user")
 @RestController
 public class UserController extends BaseController implements IUserController {
 
     private IUserApplicationService userService;
     private IChallengeApplicationService challengeApplicationService;
+    private AuthenticatedUserHelper authenticatedUserHelper;
 
     @Autowired
-    public UserController(IUserApplicationService userService, IChallengeApplicationService challengeApplicationService) {
+    public UserController(IUserApplicationService userService,
+                          IChallengeApplicationService challengeApplicationService,
+                          AuthenticatedUserHelper authenticatedUserHelper) {
         this.userService = userService;
         this.challengeApplicationService = challengeApplicationService;
+        this.authenticatedUserHelper = authenticatedUserHelper;
     }
 
     @Override
-    @PostMapping(value = "/user/create")
+    @PostMapping(value = "/create")
     public UserOutputVO create(@ModelAttribute UserInputVO user) {
         return userService.create(user);
     }
 
     @Override
-    @GetMapping(value = "/user/{id}")
+    @GetMapping(value = "/{id}")
     public UserOutputVO searchById(@PathVariable Long id) {
         return userService.searchById(id);
     }
 
     @Override
-    @GetMapping(value = "/user/searchByFirstName")
+    @GetMapping(value = "/searchByFirstName")
     public List<UserOutputVO> searchByFirstName(@RequestParam String firstName) {
         return userService.findByFirstName(firstName);
     }
 
     @Override
-    @GetMapping(value = "/user/findByEmail")
+    @GetMapping(value = "/findByEmail")
     public UserOutputVO findByEmail(@RequestParam String email) {
         return userService.findByEmail(email);
     }
 
     @Override
     @ResponseBody
-    @PostMapping(value = "/user/findByEmailAndPassword")
+    @PostMapping(value = "/findByEmailAndPassword")
     public UserOutputVO findByEmailAndPassword(@RequestParam String email, @RequestParam String password) {
         return userService.findByEmailAndPassword(email, password);
     }
 
     @Override
-    @PutMapping(value = "/user/addChallengeToFavorites")
+    @PutMapping(value = "/addChallengeToFavorites")
     public void addChallengeToFavorites(HttpServletRequest httpServletRequest, @RequestParam Long challengeId) {
-        Long userId = getAuthenticatedUserId(httpServletRequest);
+        Long userId = authenticatedUserHelper.getAuthenticatedUser(httpServletRequest).getId();
         userService.addChallengeToFavorites(userId, challengeId);
     }
 
     @Override
-    @PutMapping(value = "/user/removeChallengeFromFavorites")
+    @PutMapping(value = "/removeChallengeFromFavorites")
     public void removeChallengeFromFavorites(Long userId, Long challengeId) {
         userService.removeChallengeFromFavorites(userId, challengeId);
     }
 
     @Override
-    @GetMapping(value = "/user/findAll")
+    @GetMapping(value = "/findAll")
     public List<UserOutputVO> findAll() {
         return userService.findAll();
     }
 
     @Override
-    @GetMapping(value = "/user/username/{username}")
+    @GetMapping(value = "/username/{username}")
     public UserOutputVO findByUsername(@PathVariable String username) {
         return userService.findByUsername(username);
     }
 
     @Override
-    @GetMapping(value = "/user/{id}/challenges/favorites")
+    @GetMapping(value = "/{id}/challenges/favorites")
     public List<ChallengeOutputVO> findFavoritesChallengesFromUser(@PathVariable Long id) {
         return userService.findFavoritesChallengesFromUser(id);
     }
 
     @Override
-    @GetMapping(value = "/user/{id}/challenges")
+    @GetMapping(value = "/{id}/challenges")
     public List<ChallengeOutputVO> findCreatedChallengesFromUser(@PathVariable Long id) {
         return challengeApplicationService.findAllByAuthor(id);
     }

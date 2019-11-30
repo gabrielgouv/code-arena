@@ -1,6 +1,7 @@
 zuul:
   routes:
     api:
+      sensitiveHeaders: Cookie,Set-Cookie
       url: http://code-arena-api:8081
     auth:
       sensitiveHeaders: Cookie,Set-Cookie

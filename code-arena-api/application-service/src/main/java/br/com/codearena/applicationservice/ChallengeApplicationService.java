@@ -1,6 +1,7 @@
 package br.com.codearena.applicationservice;
 
 import br.com.codearena.applicationservice.contract.IChallengeApplicationService;
+import br.com.codearena.applicationservice.exception.NotFoundException;
 import br.com.codearena.domain.entity.Challenge;
 import br.com.codearena.domain.entity.User;
 import br.com.codearena.domainservice.contract.IChallengeDomainService;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ChallengeApplicationService implements IChallengeApplicationService {
@@ -22,7 +24,9 @@ public class ChallengeApplicationService implements IChallengeApplicationService
     private ModelMapper modelMapper;
 
     @Autowired
-    public ChallengeApplicationService(IChallengeDomainService challengeDomainService, IUserDomainService userDomainService, ModelMapper modelMapper) {
+    public ChallengeApplicationService(IChallengeDomainService challengeDomainService,
+                                       IUserDomainService userDomainService,
+                                       ModelMapper modelMapper) {
         this.challengeDomainService = challengeDomainService;
         this.userDomainService = userDomainService;
         this.modelMapper = modelMapper;
@@ -33,8 +37,13 @@ public class ChallengeApplicationService implements IChallengeApplicationService
         Challenge challenge = modelMapper.map(challengeInputVO, Challenge.class);
         challenge.setId(null);
 
-        User user = userDomainService.findById(challengeInputVO.getAuthorId());
-        challenge.setAuthor(user);
+        Optional<User> userOptional = userDomainService.findById(challengeInputVO.getAuthorId());
+
+        if (!userOptional.isPresent()) {
+            throw new NotFoundException("User not found");
+        }
+
+        challenge.setAuthor(userOptional.get());
 
         challenge = challengeDomainService.save(challenge);
 
@@ -56,8 +65,13 @@ public class ChallengeApplicationService implements IChallengeApplicationService
 
     @Override
     public List<ChallengeOutputVO> findAllByAuthor(Long userId) {
-        User user  = userDomainService.findById(userId);
-        List<Challenge> challenges = challengeDomainService.findAllByAuthor(user);
+        Optional<User> userOptional  = userDomainService.findById(userId);
+
+        if (!userOptional.isPresent()) {
+            throw new NotFoundException("User not found");
+        }
+
+        List<Challenge> challenges = challengeDomainService.findAllByAuthor(userOptional.get());
 
         List<ChallengeOutputVO> challengeOutputVOs = new ArrayList<>();
 

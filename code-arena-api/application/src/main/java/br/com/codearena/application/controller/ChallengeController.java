@@ -8,11 +8,13 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @Api(tags = "Challenge")
+@RequestMapping(value = "/challenge")
 @RestController
 public class ChallengeController implements IChallengeController {
 
@@ -24,13 +26,13 @@ public class ChallengeController implements IChallengeController {
     }
 
     @Override
-    @PostMapping(value = "/challenge/create")
+    @PostMapping(value = "/create")
     public ChallengeOutputVO create(ChallengeInputVO challengeInputVO) {
         return challengeApplicationService.create(challengeInputVO);
     }
 
     @Override
-    @GetMapping(value = "/challenge/findAll")
+    @GetMapping(value = "/findAll")
     public List<ChallengeOutputVO> findAll() {
         return challengeApplicationService.findAll();
     }

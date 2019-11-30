@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ChallengeDomainService implements IChallengeDomainService {
@@ -25,8 +26,8 @@ public class ChallengeDomainService implements IChallengeDomainService {
     }
 
     @Override
-    public Challenge findById(Long id) {
-        return challengeRepository.getOne(id);
+    public Optional<Challenge> findById(Long id) {
+        return challengeRepository.findById(id);
     }
 
     @Override
