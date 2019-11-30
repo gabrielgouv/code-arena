@@ -5,6 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Mvn clean install in code-arena-auth
-      working-directory: ./code-arena-auth
+    - name: Mvn clean install in code-arena-auth-server
+      working-directory: ./code-arena-auth-server
       run: mvn clean install
