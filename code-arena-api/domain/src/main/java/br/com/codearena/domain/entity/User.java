@@ -35,6 +35,13 @@ public class User extends BaseEntity<Long> {
             inverseJoinColumns = @JoinColumn(name = "challenge_id"))
     private Set<Challenge> favoriteChallenges;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_solved_challenges",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "challenge_id"))
+    private Set<Challenge> solvedChallenges;
+
     @OneToMany(mappedBy = "author")
     private List<Challenge> createdChallenges;
 
@@ -91,6 +98,14 @@ public class User extends BaseEntity<Long> {
 
     public void setFavoriteChallenges(Set<Challenge> favoriteChallenges) {
         this.favoriteChallenges = favoriteChallenges;
+    }
+
+    public Set<Challenge> getSolvedChallenges() {
+        return solvedChallenges;
+    }
+
+    public void setSolvedChallenges(Set<Challenge> solvedChallenges) {
+        this.solvedChallenges = solvedChallenges;
     }
 
     public List<Challenge> getCreatedChallenges() {

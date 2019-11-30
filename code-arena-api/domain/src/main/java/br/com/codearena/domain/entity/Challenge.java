@@ -27,6 +27,9 @@ public class Challenge extends BaseEntity<Long> {
     @ManyToMany(mappedBy = "favoriteChallenges")
     private List<User> usersWhoFavorited;
 
+    @ManyToMany(mappedBy = "solvedChallenges")
+    private List<User> usersWhoSolved;
+
     @ManyToOne
     private User author;
 
@@ -68,6 +71,14 @@ public class Challenge extends BaseEntity<Long> {
 
     public void setUsersWhoFavorited(List<User> usersWhoFavorited) {
         this.usersWhoFavorited = usersWhoFavorited;
+    }
+
+    public List<User> getUsersWhoSolved() {
+        return usersWhoSolved;
+    }
+
+    public void setUsersWhoSolved(List<User> usersWhoSolved) {
+        this.usersWhoSolved = usersWhoSolved;
     }
 
     public User getAuthor() {

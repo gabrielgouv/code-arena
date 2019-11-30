@@ -64,6 +64,30 @@ public class ChallengeApplicationService implements IChallengeApplicationService
     }
 
     @Override
+    public List<ChallengeOutputVO> findAllWithUser(Long userId) {
+        List<Challenge> challenges = challengeDomainService.findAll();
+        List<ChallengeOutputVO> challengeOutputVOs = new ArrayList<>();
+
+        Optional<User> userOptional = userDomainService.findById(userId);
+
+        if (!userOptional.isPresent()) {
+            throw new NotFoundException("User not found");
+        }
+
+        User user = userOptional.get();
+
+        for (Challenge challenge : challenges) {
+            ChallengeOutputVO challengeOutputVO = modelMapper.map(challenge, ChallengeOutputVO.class);
+            if (challenge.getUsersWhoSolved().contains(user)) {
+                challengeOutputVO.setUserSolved(true);
+            }
+            challengeOutputVOs.add(challengeOutputVO);
+        }
+
+        return challengeOutputVOs;
+    }
+
+    @Override
     public List<ChallengeOutputVO> findAllByAuthor(Long userId) {
         Optional<User> userOptional  = userDomainService.findById(userId);
 
@@ -80,6 +104,30 @@ public class ChallengeApplicationService implements IChallengeApplicationService
         }
 
         return challengeOutputVOs;
+    }
+
+    @Override
+    public void finishChallenge(Long challengeId, Long userId) {
+        Optional<Challenge> challengeOptional = challengeDomainService.findById(challengeId);
+
+        if (!challengeOptional.isPresent()) {
+            throw new NotFoundException("Challenge not found");
+        }
+
+        Challenge challenge = challengeOptional.get();
+
+        Optional<User> userOptional = userDomainService.findById(userId);
+
+        if (!userOptional.isPresent()) {
+            throw new NotFoundException("User not found");
+        }
+
+        User user = userOptional.get();
+
+        user.getSolvedChallenges().add(challenge);
+
+        userDomainService.save(user);
+
     }
 
 }

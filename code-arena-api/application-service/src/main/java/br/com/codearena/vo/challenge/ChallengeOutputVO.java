@@ -7,6 +7,7 @@ public class ChallengeOutputVO {
     private String content;
     private String difficultLevel;
     private Long authorId;
+    private Boolean userSolved;
 
     public Long getId() {
         return id;
@@ -46,5 +47,13 @@ public class ChallengeOutputVO {
 
     public void setAuthorId(Long authorId) {
         this.authorId = authorId;
+    }
+
+    public Boolean getUserSolved() {
+        return userSolved;
+    }
+
+    public void setUserSolved(Boolean userSolved) {
+        this.userSolved = userSolved;
     }
 }

@@ -1,16 +1,15 @@
 package br.com.codearena.application.controller;
 
+import br.com.codearena.application.helper.AuthenticatedUserHelper;
 import br.com.codearena.applicationservice.contract.IChallengeApplicationService;
 import br.com.codearena.application.controller.contract.IChallengeController;
 import br.com.codearena.vo.challenge.ChallengeInputVO;
 import br.com.codearena.vo.challenge.ChallengeOutputVO;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Api(tags = "Challenge")
@@ -19,10 +18,13 @@ import java.util.List;
 public class ChallengeController implements IChallengeController {
 
     private IChallengeApplicationService challengeApplicationService;
+    private AuthenticatedUserHelper authenticatedUserHelper;
 
     @Autowired
-    public ChallengeController(IChallengeApplicationService challengeApplicationService) {
+    public ChallengeController(IChallengeApplicationService challengeApplicationService,
+                               AuthenticatedUserHelper authenticatedUserHelper) {
         this.challengeApplicationService = challengeApplicationService;
+        this.authenticatedUserHelper = authenticatedUserHelper;
     }
 
     @Override
@@ -35,6 +37,20 @@ public class ChallengeController implements IChallengeController {
     @GetMapping(value = "/findAll")
     public List<ChallengeOutputVO> findAll() {
         return challengeApplicationService.findAll();
+    }
+
+    @Override
+    @GetMapping(value = "/findAllWithUser")
+    public List<ChallengeOutputVO> findAllWithUser(HttpServletRequest httpServletRequest) {
+        Long userId = authenticatedUserHelper.getAuthenticatedUser(httpServletRequest).getId();
+        return challengeApplicationService.findAllWithUser(userId);
+    }
+
+    @Override
+    @PutMapping(value = "/finishChallenge/{id}")
+    public void finishChallenge(HttpServletRequest httpServletRequest, @PathVariable Long id) {
+        Long userId = authenticatedUserHelper.getAuthenticatedUser(httpServletRequest).getId();
+        challengeApplicationService.finishChallenge(id, userId);
     }
 
 }

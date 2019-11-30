@@ -10,6 +10,8 @@ public interface IChallengeApplicationService {
 
     ChallengeOutputVO create(ChallengeInputVO challengeInputVO);
     List<ChallengeOutputVO> findAll();
+    List<ChallengeOutputVO> findAllWithUser(Long userId);
     List<ChallengeOutputVO> findAllByAuthor(Long userId);
 
+    void finishChallenge(Long challengeId, Long userId);
 }
