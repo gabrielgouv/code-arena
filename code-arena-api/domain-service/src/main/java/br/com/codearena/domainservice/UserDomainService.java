@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserDomainService implements IUserDomainService {
@@ -24,8 +25,8 @@ public class UserDomainService implements IUserDomainService {
     }
 
     @Override
-    public User findById(Long id) {
-        return userRepository.getOne(id);
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
     }
 
     @Override

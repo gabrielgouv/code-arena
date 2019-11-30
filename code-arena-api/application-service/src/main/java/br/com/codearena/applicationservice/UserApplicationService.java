@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -50,8 +51,13 @@ public class UserApplicationService implements IUserApplicationService {
 
     @Override
     public UserOutputVO searchById(Long id) {
-        User user = userDomainService.findById(id);
-        return mapper.map(user, UserOutputVO.class);
+        Optional<User> user = userDomainService.findById(id);
+
+        if (!user.isPresent()) {
+            throw new NotFoundException("User not found");
+        }
+
+        return mapper.map(user.get(), UserOutputVO.class);
     }
 
     @Override
@@ -91,17 +97,17 @@ public class UserApplicationService implements IUserApplicationService {
     @Override
     @Transactional(rollbackFor = Throwable.class)
     public void addChallengeToFavorites(Long userId, Long challengeId) {
-        User user = userDomainService.findById(userId);
-
-        if (user == null) {
+        Optional<User> userOptional = userDomainService.findById(userId);
+        if (!userOptional.isPresent()) {
             throw new NotFoundException("User not found");
         }
+        User user = userOptional.get();
 
-        Challenge challenge = challengeDomainService.findById(challengeId);
-
-        if (challenge == null) {
+        Optional<Challenge> challengeOptional = challengeDomainService.findById(challengeId);
+        if (!challengeOptional.isPresent()) {
             throw new NotFoundException("Challenge not found");
         }
+        Challenge challenge = challengeOptional.get();
 
         Set<Challenge> userFavoriteChallenges = user.getFavoriteChallenges();
 
@@ -119,17 +125,17 @@ public class UserApplicationService implements IUserApplicationService {
     @Override
     @Transactional(rollbackFor = Throwable.class)
     public void removeChallengeFromFavorites(Long userId, Long challengeId) {
-        User user = userDomainService.findById(userId);
-
-        if (user == null) {
+        Optional<User> userOptional = userDomainService.findById(userId);
+        if (!userOptional.isPresent()) {
             throw new NotFoundException("User not found");
         }
+        User user = userOptional.get();
 
-        Challenge challenge = challengeDomainService.findById(challengeId);
-
-        if (challenge == null) {
+        Optional<Challenge> challengeOptional = challengeDomainService.findById(challengeId);
+        if (!challengeOptional.isPresent()) {
             throw new NotFoundException("Challenge not found");
         }
+        Challenge challenge = challengeOptional.get();
 
         Set<Challenge> userFavoriteChallenges = user.getFavoriteChallenges();
 
@@ -162,11 +168,13 @@ public class UserApplicationService implements IUserApplicationService {
 
     @Override
     public List<ChallengeOutputVO> findFavoritesChallengesFromUser(Long id) {
-        User user = userDomainService.findById(id);
+        Optional<User> userOptional = userDomainService.findById(id);
 
-        if (user == null) {
+        if (!userOptional.isPresent()) {
             throw new NotFoundException("User not found");
         }
+
+        User user = userOptional.get();
 
         Set<Challenge> favoriteChallenges = user.getFavoriteChallenges();
         List<ChallengeOutputVO> favoriteChallengesVO = new ArrayList<>();

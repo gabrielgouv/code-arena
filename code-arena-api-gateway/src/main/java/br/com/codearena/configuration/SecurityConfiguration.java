@@ -40,7 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers(config.getUrl()).permitAll()
-                .antMatchers("/api/**").authenticated();
+                .antMatchers("/api/**").authenticated()
+                .mvcMatchers("/api/swagger-ui.html").permitAll();
     }
 
 }
