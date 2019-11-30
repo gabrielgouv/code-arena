@@ -67,4 +67,4 @@ Desta forma o Code Arena API será exposto por padrão na porta 8081 e o banco n
 
 # Arquitetura dos serviços completo (WIP)
 
-![Arquitetura completa](https://github.com/gabrielgouv/code-arena/blob/master/code-arena-docs/arch_v2_full.png?raw=true)
+![Arquitetura completa](/code-arena-docs/arch_v3_full.png?raw=true)
