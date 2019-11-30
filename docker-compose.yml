@@ -16,17 +16,17 @@ services:
       - "5430:5432"
     networks:
       - code-arena-network
-  flyway:
-    image: flyway/flyway
-    command: -url=jdbc:postgresql://db:5432/codearena_test -schemas=public -user=postgres -password=test -connectRetries=10 migrate 
-    volumes:
-      - ./code-arena-migration/:/flyway/sql
-    links:
-      - db
-    depends_on:
-      - db
-    networks:
-      - code-arena-network
+  # flyway:
+  #   image: flyway/flyway
+  #   command: -url=jdbc:postgresql://db:5432/codearena_test -schemas=public -user=postgres -password=test -connectRetries=10 migrate 
+  #   volumes:
+  #     - ./code-arena-migration/:/flyway/sql
+  #   links:
+  #     - db
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - code-arena-network
   code-arena-api:
     container_name: code-arena-api-full
     image: gabrielgouv/code-arena
@@ -42,6 +42,28 @@ services:
     ports:
     #   - "8081:8081"
       - "5006:5006"
+    command: 'sh startup.sh'
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - code-arena-network
+  code-arena-auth-server:
+    container_name: code-arena-auth-server
+    image: gabrielgouv/code-arena-auth-server
+    restart: always
+    build:
+      context: ./code-arena-auth-server
+      dockerfile: Dockerfile
+    working_dir: /code-arena
+    environment:
+      TZ: America/Sao_Paulo
+      SPRING_BOOT_ENVIROMENT: Development
+      SPRING_PROFILES_ACTIVE: dockerdev
+    ports:
+      - "8090:8090"
+      - "5007:5007"
     command: 'sh startup.sh'
     links:
       - db

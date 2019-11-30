@@ -1,9 +1,17 @@
-zuul:
-  routes:
-    api:
-      url: http://localhost:8081/api
-    auth:
-      url: http://localhost:8090/auth
-server:
-  port: 8080
-
+#zuul:
+#  routes:
+#    api:
+#      url: http://localhost:8081/api
+#    auth:
+#      path: /auth/**
+#      stripPrefix: false
+#      url: http://localhost:8090/auth
+#server:
+#  port: 8080
+#code-arena:
+#  security:
+#    jwt:
+#      secret: codearena
+#      url: /getToken
+#      header: Authorization
+#      prefix: Bearer
