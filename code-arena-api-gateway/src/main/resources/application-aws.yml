@@ -1,0 +1,22 @@
+zuul:
+  routes:
+    api:
+      sensitiveHeaders: Cookie,Set-Cookie
+      url: http://code-arena-api.codearenaaws:8081
+    auth:
+      sensitiveHeaders: Cookie,Set-Cookie
+      url: http://code-arena-auth-server.codearenaaws:8090
+server:
+  port: 8080
+code-arena:
+  security:
+    jwt:
+      secret: codearena
+      url: /getToken
+      header: Authorization
+      prefix: Bearer
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

@@ -1,0 +1,7 @@
+FROM maven:3.6.2-jdk-8-openj9
+
+ADD application/target/application-1.0-SNAPSHOT-final.jar app.jar
+
+EXPOSE 8081
+
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar"]
