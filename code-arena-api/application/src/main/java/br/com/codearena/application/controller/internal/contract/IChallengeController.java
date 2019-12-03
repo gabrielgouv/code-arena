@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IChallengeController {
 
-    ChallengeOutputVO create(ChallengeInputVO challengeInputVO);
+    ChallengeOutputVO create(HttpServletRequest httpServletRequest, ChallengeInputVO challengeInputVO);
     List<ChallengeOutputVO> findAll();
     List<ChallengeOutputVO> findAllWithUser(HttpServletRequest httpServletRequest);
     void finishChallenge(HttpServletRequest httpServletRequest, Long id);

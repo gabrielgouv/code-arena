@@ -2,6 +2,7 @@ package br.com.codearena.domainservice;
 
 import br.com.codearena.domainservice.contract.IUserDomainService;
 import br.com.codearena.domain.entity.User;
+import br.com.codearena.domainservice.exception.IllegalOperationException;
 import br.com.codearena.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,15 @@ public class UserDomainService implements IUserDomainService {
 
     @Override
     public User save(User user) {
+
+        if (userRepository.findByUsername(user.getUsername()) != null) {
+            throw new IllegalOperationException("A user with this username already exists");
+        }
+
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new IllegalOperationException("This email is already in use by another user");
+        }
+
         return userRepository.save(user);
     }
 

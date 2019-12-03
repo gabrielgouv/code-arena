@@ -33,11 +33,11 @@ public class ChallengeApplicationService implements IChallengeApplicationService
     }
 
     @Override
-    public ChallengeOutputVO create(ChallengeInputVO challengeInputVO) {
+    public ChallengeOutputVO create(Long authorId, ChallengeInputVO challengeInputVO) {
         Challenge challenge = modelMapper.map(challengeInputVO, Challenge.class);
         challenge.setId(null);
 
-        Optional<User> userOptional = userDomainService.findById(challengeInputVO.getAuthorId());
+        Optional<User> userOptional = userDomainService.findById(authorId);
 
         if (!userOptional.isPresent()) {
             throw new NotFoundException("User not found");
@@ -47,7 +47,10 @@ public class ChallengeApplicationService implements IChallengeApplicationService
 
         challenge = challengeDomainService.save(challenge);
 
-        return modelMapper.map(challenge, ChallengeOutputVO.class);
+        ChallengeOutputVO challengeOutputVO = modelMapper.map(challenge, ChallengeOutputVO.class);
+        challengeOutputVO.setContent(null); // Não é necessário retornar o contéudo
+
+        return challengeOutputVO;
     }
 
     @Override

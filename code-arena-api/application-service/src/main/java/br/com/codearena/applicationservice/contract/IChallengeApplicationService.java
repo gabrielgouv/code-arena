@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface IChallengeApplicationService {
 
-    ChallengeOutputVO create(ChallengeInputVO challengeInputVO);
+    ChallengeOutputVO create(Long authorId, ChallengeInputVO challengeInputVO);
     List<ChallengeOutputVO> findAll();
     List<ChallengeOutputVO> findAllWithUser(Long userId);
     List<ChallengeOutputVO> findAllByAuthor(Long userId);
-
     void finishChallenge(Long challengeId, Long userId);
+
 }

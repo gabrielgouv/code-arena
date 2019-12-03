@@ -17,6 +17,21 @@ public class Challenge extends BaseEntity<Long> {
     @Column(columnDefinition = "text", nullable = false)
     private String content;
 
+    @Column(name = "input_format", columnDefinition = "text", nullable = false)
+    private String inputFormat;
+
+    @Column(name = "constraints", columnDefinition = "text", nullable = false)
+    private String constraints;
+
+    @Column(name = "output_format", columnDefinition = "text", nullable = false)
+    private String outputFormat;
+
+    @Column(name = "test_cases", columnDefinition = "text", nullable = false)
+    private String testCases;
+
+    @Column(name = "test_expectation", columnDefinition = "text", nullable = false)
+    private String testExpectation;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "difficult_level", nullable = false)
     private DifficultLevel difficultLevel;
@@ -47,6 +62,46 @@ public class Challenge extends BaseEntity<Long> {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getInputFormat() {
+        return inputFormat;
+    }
+
+    public void setInputFormat(String inputFormat) {
+        this.inputFormat = inputFormat;
+    }
+
+    public String getConstraints() {
+        return constraints;
+    }
+
+    public void setConstraints(String constraints) {
+        this.constraints = constraints;
+    }
+
+    public String getOutputFormat() {
+        return outputFormat;
+    }
+
+    public void setOutputFormat(String outputFormat) {
+        this.outputFormat = outputFormat;
+    }
+
+    public String getTestCases() {
+        return testCases;
+    }
+
+    public void setTestCases(String testCases) {
+        this.testCases = testCases;
+    }
+
+    public String getTestExpectation() {
+        return testExpectation;
+    }
+
+    public void setTestExpectation(String testExpectation) {
+        this.testExpectation = testExpectation;
     }
 
     public DifficultLevel getDifficultLevel() {

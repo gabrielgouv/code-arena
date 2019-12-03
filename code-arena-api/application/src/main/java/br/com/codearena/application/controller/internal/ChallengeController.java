@@ -7,6 +7,7 @@ import br.com.codearena.vo.challenge.ChallengeInputVO;
 import br.com.codearena.vo.challenge.ChallengeOutputVO;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,9 +29,10 @@ public class ChallengeController implements IChallengeController {
     }
 
     @Override
-    @PostMapping(value = "/create")
-    public ChallengeOutputVO create(ChallengeInputVO challengeInputVO) {
-        return challengeApplicationService.create(challengeInputVO);
+    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ChallengeOutputVO create(HttpServletRequest httpServletRequest, @RequestBody ChallengeInputVO challengeInputVO) {
+        Long userId = authenticatedUserHelper.getAuthenticatedUser(httpServletRequest).getId();
+        return challengeApplicationService.create(userId, challengeInputVO);
     }
 
     @Override
