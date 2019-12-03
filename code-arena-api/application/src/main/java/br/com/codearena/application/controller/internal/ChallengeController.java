@@ -1,6 +1,7 @@
 package br.com.codearena.application.controller.internal;
 
 import br.com.codearena.application.helper.AuthenticatedUserHelper;
+import br.com.codearena.applicationservice.ChallengeApplicationService;
 import br.com.codearena.applicationservice.contract.IChallengeApplicationService;
 import br.com.codearena.application.controller.internal.contract.IChallengeController;
 import br.com.codearena.vo.challenge.ChallengeInputVO;
@@ -54,5 +55,12 @@ public class ChallengeController implements IChallengeController {
         Long userId = authenticatedUserHelper.getAuthenticatedUser(httpServletRequest).getId();
         challengeApplicationService.finishChallenge(id, userId);
     }
+
+    @Override
+    @GetMapping(value = "/{id}")
+    public ChallengeOutputVO searchById(@PathVariable Long id) {
+        return challengeApplicationService.searchById(id);
+    }
+
 
 }

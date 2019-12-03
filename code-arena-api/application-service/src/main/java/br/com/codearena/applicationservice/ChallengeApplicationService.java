@@ -8,6 +8,7 @@ import br.com.codearena.domainservice.contract.IChallengeDomainService;
 import br.com.codearena.domainservice.contract.IUserDomainService;
 import br.com.codearena.vo.challenge.ChallengeInputVO;
 import br.com.codearena.vo.challenge.ChallengeOutputVO;
+import br.com.codearena.vo.user.UserOutputVO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class ChallengeApplicationService implements IChallengeApplicationService
     private IChallengeDomainService challengeDomainService;
     private IUserDomainService userDomainService;
     private ModelMapper modelMapper;
+
 
     @Autowired
     public ChallengeApplicationService(IChallengeDomainService challengeDomainService,
@@ -131,6 +133,18 @@ public class ChallengeApplicationService implements IChallengeApplicationService
 
         userDomainService.save(user);
 
+    }
+
+
+    @Override
+    public ChallengeOutputVO searchById(Long id) {
+        Optional<Challenge> challenge = challengeDomainService.findById(id);
+
+        if (!challenge.isPresent()) {
+            throw new NotFoundException("Challenge not found");
+        }
+
+        return modelMapper.map(challenge.get(), ChallengeOutputVO.class);
     }
 
 }

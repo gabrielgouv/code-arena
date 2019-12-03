@@ -13,5 +13,6 @@ public interface IChallengeApplicationService {
     List<ChallengeOutputVO> findAllWithUser(Long userId);
     List<ChallengeOutputVO> findAllByAuthor(Long userId);
     void finishChallenge(Long challengeId, Long userId);
+    ChallengeOutputVO searchById(Long id);
 
 }

@@ -6,10 +6,10 @@ code-arena:
       secret: codearena
 spring:
   datasource:
-    jdbcUrl: jdbc:postgresql://db:5432/codearena_test
+    jdbcUrl: jdbc:postgresql://code-arena.cjmxfcpq4sfz.us-east-2.rds.amazonaws.com:5432/postgres
     driver-class-name: org.postgresql.Driver
     username: postgres
-    password: test
+    password: adminadmin
   jpa:
     hibernate:
       ddl-auto: none
