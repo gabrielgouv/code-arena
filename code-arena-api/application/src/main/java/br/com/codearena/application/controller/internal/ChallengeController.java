@@ -1,8 +1,8 @@
-package br.com.codearena.application.controller;
+package br.com.codearena.application.controller.internal;
 
 import br.com.codearena.application.helper.AuthenticatedUserHelper;
 import br.com.codearena.applicationservice.contract.IChallengeApplicationService;
-import br.com.codearena.application.controller.contract.IChallengeController;
+import br.com.codearena.application.controller.internal.contract.IChallengeController;
 import br.com.codearena.vo.challenge.ChallengeInputVO;
 import br.com.codearena.vo.challenge.ChallengeOutputVO;
 import io.swagger.annotations.Api;

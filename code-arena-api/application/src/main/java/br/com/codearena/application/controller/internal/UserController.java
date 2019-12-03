@@ -1,7 +1,7 @@
-package br.com.codearena.application.controller;
+package br.com.codearena.application.controller.internal;
 
-import br.com.codearena.application.controller.contract.BaseController;
-import br.com.codearena.application.controller.contract.IUserController;
+import br.com.codearena.application.controller.internal.contract.BaseController;
+import br.com.codearena.application.controller.internal.contract.IUserController;
 import br.com.codearena.application.helper.AuthenticatedUserHelper;
 import br.com.codearena.applicationservice.contract.IChallengeApplicationService;
 import br.com.codearena.applicationservice.contract.IUserApplicationService;
@@ -10,6 +10,7 @@ import br.com.codearena.vo.user.UserInputVO;
 import br.com.codearena.vo.user.UserOutputVO;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,8 +36,8 @@ public class UserController extends BaseController implements IUserController {
     }
 
     @Override
-    @PostMapping(value = "/create")
-    public UserOutputVO create(@ModelAttribute UserInputVO user) {
+    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public UserOutputVO create(@RequestBody UserInputVO user) {
         return userService.create(user);
     }
 
