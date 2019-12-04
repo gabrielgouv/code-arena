@@ -1,7 +1,6 @@
 package br.com.codearena.application.controller.internal;
 
 import br.com.codearena.application.helper.AuthenticatedUserHelper;
-import br.com.codearena.applicationservice.ChallengeApplicationService;
 import br.com.codearena.applicationservice.contract.IChallengeApplicationService;
 import br.com.codearena.application.controller.internal.contract.IChallengeController;
 import br.com.codearena.vo.challenge.ChallengeInputVO;

@@ -163,7 +163,9 @@ public class UserApplicationService implements IUserApplicationService {
     @Override
     public UserOutputVO findByUsername(String username) {
         User user = userDomainService.findByUsername(username);
-        return  mapper.map(user, UserOutputVO.class);
+        UserOutputVO userOutputVO = mapper.map(user, UserOutputVO.class);
+        userOutputVO.setRole(user.getRole().name());
+        return userOutputVO;
     }
 
     @Override
