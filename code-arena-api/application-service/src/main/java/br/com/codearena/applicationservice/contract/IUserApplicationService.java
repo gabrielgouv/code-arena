@@ -19,6 +19,6 @@ public interface IUserApplicationService {
     UserOutputVO findByUsername(String username);
     List<ChallengeOutputVO> findFavoritesChallengesFromUser(Long id);
     void disableUser(Long removedByUserId, Long id);
-
     void enableUser(Long enabledByUserId, Long id);
+    UserOutputVO findByUsernameAndPassword(String username, String password);
 }

@@ -117,4 +117,11 @@ public class UserController extends BaseController implements IUserController {
         userService.enableUser(enabledByUserId, id);
     }
 
+    @Override
+    @ResponseBody
+    @PostMapping(value = "/login")
+    public UserOutputVO login(@RequestParam String username, @RequestParam String password) {
+        return userService.findByUsernameAndPassword(username, password);
+    }
+
 }

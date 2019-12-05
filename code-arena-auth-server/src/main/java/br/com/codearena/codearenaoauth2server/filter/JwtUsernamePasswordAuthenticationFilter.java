@@ -62,7 +62,7 @@ public class JwtUsernamePasswordAuthenticationFilter extends AbstractAuthenticat
             rsp.getWriter().write(config.getPrefix() + " " + token);
             rsp.getWriter().flush();
         } catch (IOException e) {
-            // NOOP
+            throw new RuntimeException(e);
         }
 
     }

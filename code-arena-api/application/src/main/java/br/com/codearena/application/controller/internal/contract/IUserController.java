@@ -3,8 +3,7 @@ package br.com.codearena.application.controller.internal.contract;
 import br.com.codearena.vo.challenge.ChallengeOutputVO;
 import br.com.codearena.vo.user.UserInputVO;
 import br.com.codearena.vo.user.UserOutputVO;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -24,4 +23,5 @@ public interface IUserController {
     List<ChallengeOutputVO> findCreatedChallengesFromUser(Long userId);
     void disableUser(HttpServletRequest httpServletRequest, Long id);
     void enableUser(HttpServletRequest httpServletRequest, Long id);
+    UserOutputVO login(String username, String password);
 }

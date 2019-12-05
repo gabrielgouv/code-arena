@@ -254,4 +254,19 @@ public class UserApplicationService implements IUserApplicationService {
 
     }
 
+    @Override
+    public UserOutputVO findByUsernameAndPassword(String username, String password) {
+        User user = userDomainService.findByUsername(username);
+
+        if (user.getDeletionDate() != null) {
+            throw new IllegalOperationException("Your user has been blocked, please contact support");
+        }
+
+        if (passwordEncoder.matches(password, user.getPassword())) {
+            return mapper.map(user, UserOutputVO.class);
+        }
+
+        throw new NotFoundException("Incorrect username or password");
+    }
+
 }
