@@ -23,11 +23,11 @@ public class UserDomainService implements IUserDomainService {
     @Override
     public User save(User user) {
 
-        if (userRepository.findByUsername(user.getUsername()) != null) {
+        if (user.getId() == null && userRepository.findByUsername(user.getUsername()) != null) {
             throw new IllegalOperationException("A user with this username already exists");
         }
 
-        if (userRepository.findByEmail(user.getEmail()) != null) {
+        if (user.getId() == null && userRepository.findByEmail(user.getEmail()) != null) {
             throw new IllegalOperationException("This email is already in use by another user");
         }
 

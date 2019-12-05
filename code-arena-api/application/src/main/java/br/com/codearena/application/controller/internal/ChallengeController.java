@@ -5,6 +5,7 @@ import br.com.codearena.applicationservice.contract.IChallengeApplicationService
 import br.com.codearena.application.controller.internal.contract.IChallengeController;
 import br.com.codearena.vo.challenge.ChallengeInputVO;
 import br.com.codearena.vo.challenge.ChallengeOutputVO;
+import br.com.codearena.vo.challenge.ChallengeSolutionVO;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -61,5 +62,13 @@ public class ChallengeController implements IChallengeController {
         return challengeApplicationService.searchById(id);
     }
 
+    @Override
+    @PostMapping(value = "/sendChallenge", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void sendChallenge(HttpServletRequest httpServletRequest, @RequestBody ChallengeSolutionVO challengeSolutionVO) {
+        // FIXME: Essa parte nao foi concluida,
+        //  esse metodo apenas finaliza uma challenge para o usuario logado
+        Long userId = authenticatedUserHelper.getAuthenticatedUser(httpServletRequest).getId();
+        challengeApplicationService.finishChallenge(challengeSolutionVO.getId(), userId);
+    }
 
 }
