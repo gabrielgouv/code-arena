@@ -9,6 +9,7 @@ public class UserOutputVO {
     private String lastName;
     private String dateOfBirth;
     private String role;
+    private Boolean disabled;
 
     public Long getId() {
         return id;
@@ -66,4 +67,11 @@ public class UserOutputVO {
         this.role = role;
     }
 
+    public Boolean getDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
 }

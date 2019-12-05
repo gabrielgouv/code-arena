@@ -103,4 +103,18 @@ public class UserController extends BaseController implements IUserController {
         return challengeApplicationService.findAllByAuthor(id);
     }
 
+    @Override
+    @PutMapping(value = "/disableUser/{id}")
+    public void disableUser(HttpServletRequest httpServletRequest, @PathVariable Long id) {
+        Long disabledByUserId = authenticatedUserHelper.getAuthenticatedUser(httpServletRequest).getId();
+        userService.disableUser(disabledByUserId, id);
+    }
+
+    @Override
+    @PutMapping(value = "/enableUser/{id}")
+    public void enableUser(HttpServletRequest httpServletRequest, @PathVariable Long id) {
+        Long enabledByUserId = authenticatedUserHelper.getAuthenticatedUser(httpServletRequest).getId();
+        userService.enableUser(enabledByUserId, id);
+    }
+
 }
