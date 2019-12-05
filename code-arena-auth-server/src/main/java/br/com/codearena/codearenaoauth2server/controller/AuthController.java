@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -77,16 +78,21 @@ public class AuthController implements IAuthController {
                 List<String> authorities = claims.get("authorities", List.class);
 
                 // TODO: Avaliar o uso do containsAll em outros casos, para o caso atual é funcional
-                if (username != null
-                        && authorities.containsAll(tokenAuthoritiesVO.getAuthorities())) {
+                boolean hasAuthorities = authorities.containsAll(Arrays.asList(tokenAuthoritiesVO.getAuthorities())); // Se nada for especificado, todos podem acessar
+
+                if (username != null && authorities.isEmpty()) {
+                    return ResponseEntity.ok(TokenValidation.validToken());
+                }
+
+                if (username != null && hasAuthorities) {
                     return ResponseEntity.ok(TokenValidation.validToken());
                 }
             } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(TokenValidation.invalidToken());
+                return ResponseEntity.ok(TokenValidation.invalidToken());
             }
         }
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(TokenValidation.invalidToken());
+        return ResponseEntity.ok(TokenValidation.invalidToken());
     }
 
 }

@@ -1,12 +1,11 @@
 package br.com.codearena.codearenaoauth2server.model.vo;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class TokenAuthoritiesVO implements Serializable {
 
     private String token;
-    private List<String> authorities;
+    private String[] authorities;
 
     public String getToken() {
         return token;
@@ -16,11 +15,11 @@ public class TokenAuthoritiesVO implements Serializable {
         this.token = token;
     }
 
-    public List<String> getAuthorities() {
+    public String[] getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(List<String> authorities) {
+    public void setAuthorities(String[] authorities) {
         this.authorities = authorities;
     }
 
