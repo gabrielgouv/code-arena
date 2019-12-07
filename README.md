@@ -1,5 +1,7 @@
 # Code Arena
 
+Este foi um projeto da disciplina de Sistemas Distribuídos da UniFBV. Este arquivo README está desatualizado em comparação com os arquivos de documentação (que não estão disponíveis neste repositório).
+
 ![](https://github.com/gabrielgouv/code-arena/workflows/Build%20all%20services/badge.svg) ![](https://github.com/gabrielgouv/code-arena/workflows/Build%20code-arena-api/badge.svg) ![](https://github.com/gabrielgouv/code-arena/workflows/Build%20code-arena-api-gateway/badge.svg) ![](https://github.com/gabrielgouv/code-arena/workflows/Build%20code-arena-auth/badge.svg)
 
 # Pré-requisitos:
@@ -12,7 +14,7 @@ Todos os programas listados abaixo são necessários para execução da aplicaç
 - Docker
 - Docker Compose
 
-# Subindo a aplicação completa
+# Subindo a aplicação completa (desatualizado)
 
 1. Clone este repositório na sua máquina: `git clone https://github.com/gabrielgouv/code-arena.git`
 2. Entre no diretório raiz do projeto: `cd code-arena`
@@ -68,3 +70,12 @@ Desta forma o Code Arena API será exposto por padrão na porta 8081 e o banco n
 # Arquitetura dos serviços completo (WIP)
 
 ![Arquitetura completa](/code-arena-docs/arch_v3_full.png?raw=true)
+
+# Arquitetura dos serviços na AWS
+Este projeto foi deployado no ECS da Amazon com o banco de dados PostgreSQL no RDS.
+![Arquitetura AWS](/code-arena-docs/arq_aws.png?raw=true)
+
+# Diagrama de sequência do processo de autenticação
+![Diagrama autenticação](/code-arena-docs/diag_seq_auth.png?raw=true)
+
+
